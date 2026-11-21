@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f6ef" />
+    <title>Guida operativa di Imprelio · Manuale utente</title>
+    <meta name="description" content="Manuale di Imprelio per amministratori e coordinatori. Come usare cantieri, agenda, personale, magazzino, veicoli, documenti, preventivi, statistiche e conti." />
+    <link rel="icon" href="/imprelio-favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="stylesheet" href="/src/guide.css" />
+  </head>
+  <body class="guide-page">
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+    <header class="site-header">
+      <div class="wrap guide-header">
+        <a class="brand" href="/" aria-label="Imprelio, torna alla pagina iniziale"><img src="/imprelio-mark.png" alt="" width="36" height="36" />Imprelio</a>
+        <div class="guide-header-links">
+          <a class="text-link guide-back" href="/">Torna al sito</a>
+          <a class="button button-outline" href="https://imprelio.vercel.app/login">Accedi <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenuto" tabindex="-1">
+      <section class="guide-hero" aria-labelledby="titolo-guida">
+        <div class="wrap guide-hero-inner">
+          <div>
+            <p class="eyebrow"><span></span> Manuale utente</p>
+            <h1 id="titolo-guida">Guida operativa<br /> di Imprelio.</h1>
+            <p class="guide-intro">Le procedure per amministratori e coordinatori, dall’invito del primo utente al lavoro in cantiere, dai preventivi ai resoconti.</p>
+          </div>
+          <div class="guide-download">
+            <a class="button button-strong" href="/guida-imprelio.pdf" download>Scarica la guida PDF <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#indice">Vai all’indice <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </section>
+
+      <div class="wrap guide-layout">
+        <nav class="guide-toc" id="indice" aria-labelledby="titolo-indice">
+          <h2 id="titolo-indice">Indice</h2>
+          <ol>
+            <li><a href="#iniziare">Prima di iniziare</a></li>
+            <li><a href="#accesso">Accesso e utenti</a></li>
+            <li><a href="#dashboard">Dashboard e ricerca</a></li>
+            <li><a href="#cantieri">Clienti e cantieri</a></li>
+            <li><a href="#agenda">Agenda e interventi</a></li>
+            <li><a href="#personale">Personale e squadre</a></li>
+            <li><a href="#presenze">Presenze e assenze</a></li>
+            <li><a href="#scadenze">Scadenze degli operai</a></li>
+            <li><a href="#magazzino">Magazzino</a></li>
+            <li><a href="#veicoli">Veicoli</a></li>
+            <li><a href="#documenti">Amministrazione e documenti</a></li>
+            <li><a href="#computi">Computi e preventivi</a></li>
+            <li><a href="#notifiche">Notifiche</a></li>
+            <li><a href="#statistiche">Statistiche e resoconti</a></li>
+            <li><a href="#bilanci">Bilanci, conti e movimenti</a></li>
+            <li><a href="#cestino">Archivio e cestino</a></li>
+            <li><a href="#risoluzione">Problemi frequenti</a></li>
+          </ol>
+        </nav>
+
+        <article class="guide-content" aria-label="Manuale operativo di Imprelio">
+          <section class="guide-section" id="iniziare">
+            <h2>Prima di iniziare</h2>
+            <p>Imprelio aiuta le imprese di ponteggi a coordinare cantieri, interventi, persone, materiali e mezzi. Il cliente raggruppa i cantieri. Il singolo cantiere collega attività, risorse, documenti e computi.</p>
+            <div class="guide-tip">
+              <h3>Il flusso di partenza</h3>
+              <ol>
+                <li>Da <strong>Clienti</strong> crea l’anagrafica e aggiungi il primo cantiere.</li>
+                <li>Da <strong>Agenda</strong> pianifica il sopralluogo o il montaggio.</li>
+                <li>Registra personale, presenze e movimenti nei rispettivi moduli. Se lavori da un computo PDF, prepara il preventivo e conserva il file originale.</li>
+                <li>Controlla in <strong>Notifiche</strong> le attività imminenti e usa <strong>Statistiche</strong> per riepilogare il lavoro per periodo e cantiere.</li>
+              </ol>
+            </div>
+            <p><strong>Ambiente aziendale.</strong> Accedi con le tue credenziali. I dati aziendali sono condivisi tra gli utenti abilitati. La disponibilità di alcuni moduli dipende dalle migrazioni applicate all’installazione.</p>
+            <p><strong>Modalità dimostrativa.</strong> L’app può essere eseguita senza Supabase. Trovi dati di esempio e puoi provare i flussi. Le modifiche e i file di prova rimangono nel browser usato.</p>
+            <p class="guide-source">Guida riferita al sorgente di Imprelio del 21 novembre 2026. L’accessibilità del deployment Vercel e il suo allineamento a questa versione non sono stati verificabili dall’ambiente di lavoro. <a href="https://github.com/Brack04NC/Imprelio/tree/21b8dfa505a04901d231bc0f34f46ce74be8f10b">Sorgente di riferimento · 21b8dfa</a></p>
+          </section>
+
+          <section id="accesso" class="guide-section">
+            <h2>Accesso e ruoli</h2>
+
+            <h3>Accedere allo spazio di lavoro</h3>
+            <p>Vai a Imprelio e, nella pagina <strong>Accedi a Imprelio</strong>, inserisci <strong>Email aziendale</strong> e <strong>Password</strong>, quindi premi <strong>Accedi</strong>.</p>
+            <ul>
+              <li>L’indirizzo deve essere un’email valida; può contenere al massimo 254 caratteri ed è trattato senza distinguere maiuscole e minuscole.</li>
+              <li>La password deve contenere da 8 a 128 caratteri.</li>
+              <li>L’interfaccia non offre una registrazione pubblica: un nuovo coordinatore entra tramite l’invito inviato da un amministratore.</li>
+              <li>Se le credenziali non sono valide, compare <strong>Email o password non corretti.</strong></li>
+              <li>Se l’account è autenticato ma non appartiene a uno spazio aziendale attivo, compare <strong>Il tuo account non ha accesso a un’azienda. Contatta il tuo amministratore.</strong> In questo caso è disponibile anche <strong>Esci</strong>, utile per rientrare con un altro account.</li>
+            </ul>
+            <p>Nel menu del profilo, in alto a destra, l’utente cloud vede il proprio indirizzo email e il comando <strong>Esci</strong>. L’uscita termina la sessione soltanto nel browser in uso.</p>
+
+            <h3>Attivare un invito</h3>
+            <ol>
+              <li>Apri il collegamento ricevuto per email. Un link scaduto o già usato mostra <strong>Il link è scaduto o è già stato usato. Richiedine uno nuovo.</strong></li>
+              <li>Nella pagina <strong>Imposta password</strong>, compila <strong>Nuova password</strong> e <strong>Conferma password</strong>.</li>
+              <li>Usa da 8 a 128 caratteri e inserisci due valori identici. Imprelio segnala separatamente una lunghezza non valida, due password diverse o una password considerata troppo debole.</li>
+              <li>Premi <strong>Salva password e accedi</strong>. L’invito viene associato all’account e si apre lo spazio aziendale.</li>
+            </ol>
+            <p>Se l’attivazione non termina correttamente, può essere necessario tornare al login. Il messaggio <strong>Password salvata. Accedi con la nuova password per completare l’attivazione.</strong> indica che la password è stata registrata e va usata per un nuovo accesso.</p>
+
+            <h3>Amministratore e coordinatore</h3>
+            <p>I ruoli sono assegnati per singola azienda. Un utente può quindi essere amministratore in uno spazio e coordinatore in un altro.</p>
+            <ul>
+              <li><strong>Amministratore:</strong> usa tutte le normali funzioni operative e, in più, vede <strong>Gestione accessi</strong>, invita coordinatori e può disattivarli o riattivarli.</li>
+              <li><strong>Coordinatore:</strong> può consultare e aggiornare i dati operativi dell’azienda, ma non può invitare utenti né modificare gli accessi.</li>
+              <li><strong>Coordinatore disattivato:</strong> non può più leggere o scrivere nello spazio aziendale finché un amministratore non lo riattiva.</li>
+            </ul>
+            <p>I dati e i collegamenti restano isolati per azienda: non è possibile associare, per esempio, un cliente o un cantiere appartenente a un’altra organizzazione.</p>
+
+            <h3>Invitare e gestire i coordinatori</h3>
+            <p><strong>Percorso amministratore:</strong> <strong>Operatività → Gestione accessi</strong>, oppure menu del profilo → <strong>Gestione accessi</strong>.</p>
+            <ol>
+              <li>Premi <strong>Invita coordinatore</strong>.</li>
+              <li>Inserisci l’<strong>Indirizzo email</strong> e premi <strong>Invia invito</strong>. Durante l’operazione il pulsante mostra <strong>Invio…</strong>.</li>
+              <li>Controlla il risultato nelle aree <strong>Utenti</strong> e <strong>Inviti in attesa</strong>. Un invito non ancora accettato può essere spedito di nuovo con <strong>Reinvia</strong>.</li>
+            </ol>
+            <ul>
+              <li>Un indirizzo non valido produce <strong>Inserisci un indirizzo email valido.</strong></li>
+              <li>Se la persona è già membro dell’azienda, compare <strong>Questa persona ha già accesso all’azienda.</strong></li>
+              <li>L’invito viene registrato prima della consegna dell’email. Se il servizio email non è disponibile, può comparire <strong>Invito registrato. Configura l’invio email e riprova.</strong> oppure <strong>Invito registrato. L’email non è partita: riprova tra poco.</strong> L’indirizzo resta in <strong>Inviti in attesa</strong> e può essere reinviato.</li>
+              <li>Nell’elenco <strong>Utenti</strong>, ogni riga indica <strong>Amministratore</strong> o <strong>Coordinatore</strong> e lo stato <strong>Attivo</strong> o <strong>Disattivato</strong>. I comandi <strong>Disattiva</strong> e <strong>Riattiva</strong> sono disponibili solo per i coordinatori; l’amministratore non può disattivare un altro amministratore da questa schermata.</li>
+            </ul>
+
+            <h3>Cambiare azienda e usare la demo</h3>
+            <p>Se l’account appartiene a più aziende, apri il menu del profilo e scegli il nome dell’azienda desiderata. Imprelio torna alla Dashboard e mantiene l’azienda selezionata mentre navighi tra le sezioni. Controlla sempre il nome in fondo al menu laterale prima di inserire o modificare dati.</p>
+            <p>In un’installazione senza collegamento al database, il login mostra invece <strong>Apri la demo</strong>. La demo usa il profilo e l’azienda di esempio indicati come <strong>Profilo dimostrativo</strong> e <strong>Spazio dimostrativo</strong>. Le modifiche restano nel browser in uso: non vengono condivise con colleghi, non inviano email reali e possono andare perse cancellando i dati del browser.</p>
+          </section>
+
+          <section id="dashboard" class="guide-section">
+            <h2>Navigazione, ricerca e Dashboard</h2>
+
+            <h3>Orientarsi nell’area di lavoro</h3>
+            <p>Il menu laterale divide le funzioni in due gruppi.</p>
+            <figure class="guide-figure">
+              <img src="/dashboard.webp" width="1280" height="820" alt="Dashboard di Imprelio con i quattro widget iniziali" loading="lazy" />
+              <figcaption>Dashboard e widget con dati dimostrativi.</figcaption>
+            </figure>
+            <ul>
+              <li><strong>Operatività:</strong> Dashboard, Cantieri, Agenda, Notifiche e, per gli amministratori, Gestione accessi.</li>
+              <li><strong>Gestione:</strong> Clienti, Magazzino, Personale e squadre, Presenze, Documenti, Archivio documenti, Computi metrici, Preventivi da PDF, Statistiche, Bilanci e conti, Cestino.</li>
+            </ul>
+            <p>La barra superiore mostra il percorso corrente a partire da <strong>Area di lavoro</strong>, la ricerca cantieri, le notifiche e il profilo. Su schermi piccoli premi <strong>Apri menu</strong>; scegliendo una voce il menu mobile si chiude. Il collegamento <strong>Vai al contenuto</strong> permette a chi usa la tastiera di saltare direttamente alla pagina.</p>
+
+            <h3>Cercare rapidamente un cantiere</h3>
+            <p>Vai a barra superiore → <strong>Cerca cantieri</strong>. In alternativa usa <strong>Ctrl+K</strong> su Windows o Linux e <strong>⌘K</strong> su Mac.</p>
+            <p>Il comando apre l’elenco <strong>Cantieri</strong> e porta il cursore nel campo di ricerca. La ricerca confronta il testo con nome del cantiere, cliente, comune e codice, per esempio <strong>Palazzo</strong>, <strong>Edilnova</strong>, <strong>Milano</strong> o <strong>CAN-014</strong>. Nella stessa schermata puoi filtrare per stato e scorrere le pagine da sei cantieri ciascuna. La scorciatoia non si attiva mentre è aperta una finestra di modifica.</p>
+
+            <h3>Leggere la Dashboard</h3>
+            <p>Vai a <strong>Operatività → Dashboard</strong>. La configurazione iniziale contiene quattro widget:</p>
+            <ul>
+              <li><strong>Calendario:</strong> mostra oggi e i sei giorni successivi. Seleziona un giorno per filtrare gli interventi; ogni riga riporta tipo, zona, cantiere, data, ora e stato.</li>
+              <li><strong>Magazzino:</strong> mostra articoli, posizione e disponibilità; la dicitura <strong>Sotto scorta</strong> segnala una quantità inferiore al minimo impostato.</li>
+              <li><strong>Computi metrici:</strong> riepiloga i computi con revisione, cantiere e data.</li>
+              <li><strong>Interventi di cantiere:</strong> mostra gli interventi del cantiere selezionato, oppure del primo disponibile; quelli aperti precedono quelli completati.</li>
+            </ul>
+            <p>Il collegamento in fondo a ciascun widget, come <strong>Apri calendario</strong>, <strong>Apri magazzino</strong> o <strong>Apri scheda cantiere</strong>, porta alla sezione completa. Fuori dalla modalità di personalizzazione, usa l’icona <strong>Espandi</strong> per aprire un widget a tutta larghezza e <strong>Torna alla dashboard</strong> per ripristinare la griglia.</p>
+
+            <h3>Personalizzare i widget</h3>
+            <ol>
+              <li>Premi <strong>Personalizza</strong>.</li>
+              <li>Usa <strong>Sposta prima</strong> e <strong>Sposta dopo</strong> per cambiare l’ordine. Puoi anche usare il controllo <strong>Ridimensiona</strong> o aprire <strong>Configura</strong>.</li>
+              <li>Con <strong>Aggiungi widget</strong> scegli la <strong>Funzione</strong>, l’eventuale elemento specifico, la <strong>Larghezza</strong> e l’<strong>Altezza</strong>, quindi premi <strong>Aggiungi widget</strong>.</li>
+              <li>Per un widget esistente, <strong>Configura widget</strong> consente di modificarlo, salvarlo con <strong>Salva widget</strong> oppure eliminarlo con <strong>Rimuovi widget</strong>.</li>
+              <li>Premi <strong>Fine</strong> quando la composizione è pronta.</li>
+            </ol>
+            <ul>
+              <li>Le funzioni disponibili sono <strong>Calendario</strong>, <strong>Magazzino</strong>, <strong>Computi metrici</strong>, <strong>Interventi di cantiere</strong>, <strong>Cantieri</strong>, <strong>Veicoli</strong>, <strong>Clienti</strong>, <strong>Personale e squadre</strong> e <strong>Documenti</strong>.</li>
+              <li>Puoi inserire al massimo 12 widget. È anche possibile rimuoverli tutti; in tal caso compare <strong>La dashboard è vuota</strong> con il comando <strong>Aggiungi widget</strong>.</li>
+              <li>Il bersaglio, per esempio un singolo <strong>Cantiere</strong>, <strong>Cliente</strong> o <strong>Articolo</strong>, limita il widget a quella scheda. Lascia l’opzione generale, come <strong>Tutti i cantieri</strong>, per ottenere una panoramica.</li>
+              <li><strong>Altezza standard</strong> mostra fino a quattro righe; <strong>Doppia</strong> fino a otto. La larghezza può essere <strong>Metà larghezza</strong> o <strong>Tutta larghezza</strong>; sui piccoli schermi i widget occupano comunque tutta la larghezza.</li>
+              <li><strong>Ripristina vista</strong>, disponibile dopo una modifica, sostituisce la composizione corrente con i quattro widget iniziali.</li>
+            </ul>
+
+            <h3>Scegliere una composizione utile</h3>
+            <ul>
+              <li><strong>Coordinamento giornaliero:</strong> Calendario a tutta larghezza e altezza doppia, più Interventi di cantiere fissato al cantiere prioritario.</li>
+              <li><strong>Magazzino e mezzi:</strong> Magazzino e Veicoli affiancati, eventualmente filtrati su un articolo o un mezzo.</li>
+              <li><strong>Amministrazione:</strong> Documenti, Computi metrici e Clienti, con collegamenti rapidi alle rispettive schede.</li>
+            </ul>
+            <p>I widget <strong>Cantieri</strong> e <strong>Clienti</strong> possono mostrare un elenco o una sola scheda; <strong>Personale e squadre</strong> comprende dipendenti, operai e squadre; <strong>Documenti</strong> comprende fatture, ordini e DDT; <strong>Veicoli</strong> mostra solo gli articoli classificati come veicoli. Le schede archiviate non entrano nei riepiloghi.</p>
+
+            <h3>Salvataggio e casi particolari</h3>
+            <p>La disposizione della Dashboard è salvata nel browser, separatamente per profilo e azienda. Non viene condivisa con gli altri utenti né con un altro browser. Più schede aperte nello stesso browser si aggiornano tra loro.</p>
+            <ul>
+              <li>Se il browser impedisce il salvataggio, compare <strong>Il browser non riesce a salvare il layout. Le modifiche restano disponibili finché la pagina è aperta.</strong></li>
+              <li>Se l’elemento fissato a un widget è stato eliminato, la configurazione lo indica come <strong>Elemento non disponibile</strong>; scegli un nuovo elemento o torna all’opzione generale.</li>
+              <li>Se un singolo modulo cloud non può essere letto, il relativo widget mostra <strong>Modulo non disponibile.</strong> o <strong>Calendario non disponibile.</strong> senza bloccare il resto della Dashboard.</li>
+              <li>Il widget Interventi può mostrare un errore con <strong>Riprova</strong>. Nella demo, un errore di lettura generale invita a ricaricare la pagina.</li>
+            </ul>
+          </section>
+
+          <section id="cantieri" class="guide-section">
+            <h2>Clienti e cantieri</h2>
+
+            <h3>Creare e cercare un cliente</h3>
+            <p>Vai a <strong>Gestione → Clienti → Nuovo cliente</strong>.</p>
+            <ol>
+              <li>Compila <strong>Nome o ragione sociale</strong>, l’unico campo obbligatorio.</li>
+              <li>Aggiungi, se disponibili, <strong>Referente</strong>, <strong>Email</strong>, <strong>Telefono</strong>, <strong>Indirizzo</strong> e <strong>Note</strong>.</li>
+              <li>Premi <strong>Salva cliente</strong>. La scheda appena creata viene selezionata e compare il messaggio <strong>Cliente creato.</strong></li>
+            </ol>
+            <ul>
+              <li>Nome e referente accettano fino a 140 caratteri; email 254; telefono 50; indirizzo 200; note 2.000.</li>
+              <li>L’email è facoltativa ma, se presente, deve essere valida; viene salvata in minuscolo.</li>
+              <li>Nella stessa azienda non possono esistere due clienti con lo stesso nome, anche se cambia l’uso delle maiuscole. In tal caso compare <strong>Esiste già un cliente con questo nome.</strong></li>
+            </ul>
+            <p>Il campo <strong>Cerca clienti</strong> confronta nome, referente, email, telefono e indirizzo e ignora le differenze tra maiuscole, minuscole e accenti. Seleziona una voce in <strong>Anagrafiche</strong> per vedere recapiti, note e <strong>Cantieri collegati</strong>.</p>
+
+            <h3>Modificare, collegare o eliminare un cliente</h3>
+            <p>Nella scheda cliente usa <strong>Modifica</strong> per aggiornare i dati. Da <strong>Cantieri collegati</strong> puoi aprire un cantiere esistente oppure premere <strong>Nuovo cantiere</strong>: il cliente sarà già selezionato nel modulo.</p>
+            <p>Per eliminare una scheda premi <strong>Elimina cliente</strong> e conferma. Un cliente con cantieri collegati non può essere eliminato: prima apri ogni cantiere e assegnalo a un’altra anagrafica, oppure elimina i cantieri. Dopo l’eliminazione, <strong>Ripristina</strong> resta visibile per circa tre secondi; il timer si ferma mentre il puntatore o il focus sono sull’avviso. Anche dopo la scomparsa dell’avviso, la scheda può essere recuperata da <strong>Gestione → Cestino</strong>.</p>
+
+            <h3>Usare il riepilogo Cantieri</h3>
+            <p>Vai a <strong>Operatività → Cantieri</strong>. Il riepilogo presenta quattro indicatori selezionabili:</p>
+            <ul>
+              <li><strong>Cantieri attivi:</strong> apre l’elenco filtrato su <strong>In corso</strong>.</li>
+              <li><strong>Interventi oggi:</strong> mostra gli interventi aperti previsti nella data corrente.</li>
+              <li><strong>Prossimi 7 giorni:</strong> mostra gli interventi aperti da domani fino al settimo giorno compreso.</li>
+              <li><strong>In ritardo:</strong> mostra gli interventi con data passata e stato non completato.</li>
+            </ul>
+            <p>Nell’<strong>Elenco cantieri</strong>, cerca per nome, cliente, comune o codice e filtra per <strong>Tutti gli stati</strong>, <strong>In corso</strong>, <strong>Da avviare</strong>, <strong>In pausa</strong> o <strong>Concluso</strong>. Ogni riga mostra cantiere, cliente, stato e prossimo intervento aperto; l’elenco contiene sei righe per pagina. <strong>Azzera filtri</strong> ripristina la vista quando una ricerca non restituisce risultati.</p>
+
+            <h3>Creare un cantiere</h3>
+            <p>Vai a <strong>Operatività → Cantieri → Nuovo cantiere</strong>, oppure scheda cliente → <strong>Nuovo cantiere</strong>.</p>
+            <ol>
+              <li>Inserisci <strong>Nome cantiere</strong> e <strong>Comune</strong>, entrambi obbligatori.</li>
+              <li>Completa, se disponibili, <strong>Indirizzo</strong> e <strong>Responsabile</strong>.</li>
+              <li>Scegli lo <strong>Stato</strong>: In corso, Da avviare, In pausa o Concluso.</li>
+              <li>Seleziona un <strong>Cliente</strong>. Se l’anagrafica non esiste, premi <strong>Crea cliente</strong> e inserisci <strong>Nome del nuovo cliente</strong>; <strong>Scegli un cliente esistente</strong> torna alla lista.</li>
+              <li>Premi <strong>Salva cantiere</strong>. Imprelio assegna automaticamente un codice progressivo come <strong>CAN-001</strong> e apre la nuova scheda.</li>
+            </ol>
+            <ul>
+              <li>Nome cantiere: massimo 120 caratteri; Comune: 100; Indirizzo: 200; Responsabile: 100; nuovo cliente: 140.</li>
+              <li>Ogni nuovo cantiere deve avere un cliente. Il messaggio <strong>Seleziona un cliente per il cantiere.</strong> indica che il collegamento manca.</li>
+              <li>Se il nome del nuovo cliente coincide, senza distinzione tra maiuscole e minuscole, con un’anagrafica esistente, viene riutilizzata quella scheda invece di crearne una seconda.</li>
+              <li>Il codice CAN è assegnato automaticamente e non si modifica dal modulo.</li>
+            </ul>
+
+            <h3>Consultare la scheda cantiere</h3>
+            <p>Apri una riga dell’elenco. La scheda mostra codice, nome, stato, indirizzo, cliente e responsabile. Il nome del cliente è un collegamento alla relativa anagrafica. Usa <strong>Modifica cantiere</strong> per correggere i campi o cambiare cliente.</p>
+            <p>L’area <strong>Interventi</strong> elenca i lavori in ordine cronologico, con tipo, zona, data, ora, note e stato. Un’attività non completata con data passata viene evidenziata come <strong>In ritardo</strong>. I comandi rapidi sono <strong>Modifica</strong>, <strong>Completa</strong> e, per un lavoro concluso, <strong>Riapri</strong>. Il menu contestuale offre anche <strong>Elimina intervento</strong>.</p>
+            <p>I collegamenti operativi in fondo alla pagina aprono le altre aree già filtrate sul cantiere, quando disponibili. Questo evita di riselezionare il cantiere nei moduli di magazzino, personale, documenti o computi.</p>
+
+            <h3>Eliminare e ripristinare un cantiere</h3>
+            <p>Premi <strong>Elimina cantiere</strong> e conferma. L’operazione sposta il cantiere nel Cestino: i collegamenti storici sono conservati e i relativi interventi tornano disponibili quando il cantiere viene ripristinato. Puoi usare subito <strong>Ripristina</strong> nell’avviso oppure aprire <strong>Gestione → Cestino</strong>.</p>
+            <p>Se anche il cliente collegato è stato eliminato, ripristina prima il cliente e poi il cantiere. Un cantiere o un intervento ancora nel Cestino non può essere modificato: recuperalo prima di continuare.</p>
+
+            <h3>Esempio: dal cliente al primo intervento</h3>
+            <ol>
+              <li>Crea il cliente <strong>Edilnova S.r.l.</strong> con referente e recapiti.</li>
+              <li>Dalla sua scheda premi <strong>Nuovo cantiere</strong>, inserisci <strong>Residenza Bosco</strong>, Comune <strong>Monza</strong>, stato <strong>Da avviare</strong> e salva.</li>
+              <li>Nella scheda del nuovo cantiere premi <strong>Aggiungi intervento</strong>, scegli <strong>Sopralluogo</strong>, zona <strong>Cortile interno</strong>, data e ora, quindi salva.</li>
+              <li>Quando il lavoro parte, modifica lo stato in <strong>In corso</strong>; al termine usa <strong>Completa</strong>.</li>
+            </ol>
+            <p>Nella demo le stesse operazioni restano nel browser. Nello spazio cloud sono condivise con gli utenti attivi della stessa azienda e protette dall’isolamento tra organizzazioni.</p>
+          </section>
+
+          <section id="agenda" class="guide-section">
+            <h2>Agenda e interventi</h2>
+
+            <h3>Scegliere tra Lista e Calendario</h3>
+            <p>Vai a <strong>Operatività → Agenda</strong>. In alto usa <strong>Lista</strong> o <strong>Calendario</strong>.</p>
+            <figure class="guide-figure">
+              <img src="/agenda.webp" width="1280" height="820" alt="Calendario settimanale di Imprelio con gli interventi programmati" loading="lazy" />
+              <figcaption>Calendario settimanale con dati dimostrativi.</figcaption>
+            </figure>
+            <p>La vista <strong>Lista</strong> offre questi periodi:</p>
+            <ul>
+              <li><strong>Oggi:</strong> tutti gli interventi della data corrente, compresi quelli completati.</li>
+              <li><strong>Prossimi 7 giorni:</strong> da domani al settimo giorno compreso.</li>
+              <li><strong>In ritardo:</strong> interventi con data precedente a oggi e stato ancora aperto; quelli completati non compaiono.</li>
+              <li><strong>Vai a una data:</strong> scegli un giorno e premi <strong>Mostra</strong>. La data selezionata conserva anche gli interventi completati, utile per consultare lo storico.</li>
+            </ul>
+            <p>La vista <strong>Calendario</strong> dispone di <strong>Mese</strong>, <strong>Settimana</strong> e <strong>Giorno</strong>. Usa <strong>Oggi</strong> per tornare alla data corrente e le frecce per il periodo precedente o successivo.</p>
+            <ul>
+              <li>Nel mese compaiono al massimo due interventi per giorno; il collegamento <strong>+N altri</strong> apre la giornata completa.</li>
+              <li>Nelle viste settimana e giorno, le attività senza ora sono nella riga <strong>Senza orario</strong>; le altre occupano la fascia oraria corrispondente.</li>
+              <li>Premi il simbolo di aggiunta in un giorno o in una fascia per precompilare data e, quando presente, ora.</li>
+              <li>Con la tastiera, quando un pulsante di aggiunta è attivo, le frecce spostano il focus tra giorni e fasce; <strong>Invio</strong> apre il modulo.</li>
+            </ul>
+
+            <h3>Aggiungere un intervento</h3>
+            <p>Il comando <strong>Aggiungi intervento</strong> è disponibile solo se esiste almeno un cantiere. Se l’azienda non ha cantieri, usa <strong>Crea un cantiere per iniziare</strong>.</p>
+            <ol>
+              <li>Dall’Agenda premi <strong>Aggiungi intervento</strong>, oppure scegli una fascia del Calendario. Dalla scheda cantiere usa l’omonimo pulsante nell’area <strong>Interventi</strong>.</li>
+              <li>Se l’operazione parte dall’Agenda, seleziona il <strong>Cantiere</strong>. Dalla scheda cantiere è già impostato.</li>
+              <li>Scegli il <strong>Tipo di intervento</strong>: Sopralluogo, Montaggio, Modifica, Smontaggio o Altro.</li>
+              <li>Inserisci, se utile, la <strong>Zona</strong>, per esempio <strong>Facciata nord</strong>.</li>
+              <li>Imposta la <strong>Data prevista</strong>, obbligatoria, e l’<strong>Ora</strong>, facoltativa.</li>
+              <li>Scegli lo <strong>Stato</strong>: Programmato, In corso o Completato.</li>
+              <li>Aggiungi eventuali <strong>Note</strong> e premi <strong>Salva intervento</strong>.</li>
+            </ol>
+            <ul>
+              <li>Zona: massimo 120 caratteri; Note: massimo 2.000.</li>
+              <li>Senza ora, l’elenco mostra <strong>Ora da definire</strong> e il Calendario colloca l’attività nella riga dedicata.</li>
+              <li>Se data o cantiere non sono validi, oppure la scheda collegata non è più disponibile, Imprelio chiede di controllare i dati o segnala che il dato collegato non è disponibile.</li>
+              <li>Salvando da una vista che non comprende più la nuova data, Imprelio apre automaticamente il giorno corretto, così l’intervento non sembra scomparso.</li>
+            </ul>
+
+            <h3>Modificare, completare o riaprire</h3>
+            <p>In Lista o Calendario seleziona un intervento per aprire <strong>Modifica intervento</strong>. Il menu della riga offre <strong>Modifica intervento</strong>, <strong>Apri cantiere</strong> ed <strong>Elimina intervento</strong>. Dalla scheda cantiere sono inoltre disponibili i comandi rapidi <strong>Completa</strong> e <strong>Riapri</strong>.</p>
+            <ul>
+              <li><strong>Completa</strong> porta lo stato a Completato.</li>
+              <li><strong>Riapri</strong> riporta un intervento completato a Programmato.</li>
+              <li>Per passare esplicitamente a <strong>In corso</strong>, apri la modifica e cambia il campo Stato.</li>
+              <li>Gli interventi completati restano visibili nella data originaria e nel Calendario, ma non sono conteggiati tra i ritardi né tra i prossimi lavori aperti.</li>
+            </ul>
+
+            <h3>Eliminare e recuperare un intervento</h3>
+            <ol>
+              <li>Apri il menu dell’intervento o la finestra di modifica e scegli <strong>Elimina intervento</strong>.</li>
+              <li>Nella finestra <strong>Conferma eliminazione</strong> controlla tipo, cantiere e zona, quindi premi <strong>Elimina</strong>.</li>
+              <li>Usa <strong>Ripristina</strong> nell’avviso entro circa tre secondi, oppure recupera in seguito l’intervento da <strong>Gestione → Cestino</strong>.</li>
+            </ol>
+            <p>Se l’intervento appartiene a un cantiere eliminato, ripristina prima il cantiere. Un intervento presente nel Cestino non può essere modificato finché non viene recuperato.</p>
+
+            <h3>Esempi di pianificazione</h3>
+            <ul>
+              <li><strong>Lavoro senza orario:</strong> crea <strong>Smontaggio</strong> per venerdì senza compilare Ora; comparirà in <strong>Senza orario</strong> e potrà essere assegnato più tardi.</li>
+              <li><strong>Sequenza operativa:</strong> registra prima un <strong>Sopralluogo</strong>, poi un <strong>Montaggio</strong> sulla stessa zona e infine uno <strong>Smontaggio</strong>. Le tre attività restano distinte nello storico del cantiere.</li>
+              <li><strong>Controllo ritardi:</strong> apri <strong>In ritardo</strong>, entra nell’intervento, aggiorna la data se è stato riprogrammato oppure usa <strong>Completa</strong> se il lavoro è terminato.</li>
+            </ul>
+            <p>Tutte le date applicative seguono il calendario italiano e il fuso orario di Roma. Nella demo gli interventi sono salvati localmente nel browser; nello spazio cloud sono condivisi con gli utenti attivi della stessa azienda.</p>
+          </section>
+
+          <section id="personale" class="guide-section">
+            <h2>Personale e squadre</h2>
+            <p>Questa area raccoglie le anagrafiche operative di dipendenti, operai e squadre. Serve per indicare disponibilità, qualifica o mansione, recapiti e cantiere di riferimento. Non sostituisce la gestione degli accessi all’applicazione: un’anagrafica del personale non è automaticamente un utente Imprelio.</p>
+
+            <h3>Dove si trova e come è organizzata</h3>
+            <p>Nel menu apri <strong>Gestione → Personale e squadre</strong>. L’indirizzo della pagina è <strong>/gestione/personale</strong>.</p>
+            <ul>
+              <li><strong>Dipendenti</strong> contiene il personale interno con mansione e recapiti.</li>
+              <li><strong>Operai</strong> contiene le maestranze con qualifica; da queste schede si aprono sia le presenze sia le scadenze individuali.</li>
+              <li><strong>Squadre</strong> descrive gruppi interni o imprese esterne. La scheda conserva referente, specialità e numero di operatori, ma non è un elenco nominativo dei componenti.</li>
+            </ul>
+            <p>In alto sono disponibili anche <strong>Presenze</strong>, <strong>Assegnazioni veicoli</strong> e il comando per aggiungere una scheda del tipo selezionato. Dalla scheda di un cantiere si può aprire <strong>Personale e squadre</strong> già filtrato su quel cantiere.</p>
+
+            <h3>Campi delle anagrafiche</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Scheda</th>
+                  <th scope="col">Campi principali</th>
+                  <th scope="col">Stati disponibili</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Dipendente</th>
+                  <td><strong>Nome e cognome</strong> obbligatorio; In forza dal, Cantiere, Matricola, Mansione, Telefono di lavoro, Email di lavoro e Note facoltativi.</td>
+                  <td>In servizio, Assente, Non in servizio.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Operaio</th>
+                  <td><strong>Nome e cognome</strong> obbligatorio; In forza dal, Cantiere, Matricola, Qualifica, Telefono di lavoro, Email di lavoro e Note facoltativi.</td>
+                  <td>In servizio, Assente, Non in servizio.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Squadra</th>
+                  <td><strong>Nome squadra</strong> e <strong>Tipo di squadra</strong> obbligatori; Attiva dal e Cantiere facoltativi. Per una squadra esterna è obbligatoria anche <strong>Impresa esterna</strong>. Si possono aggiungere Specialità, Referente, Numero di operatori, Telefono, Email e Note.</td>
+                  <td>Disponibile, Impegnata, Non disponibile.</td>
+                </tr>
+              </tbody>
+            </table>
+            <ul>
+              <li>Il tipo iniziale di una nuova squadra è <strong>Esterna</strong>. Scegliendo <strong>Interna</strong>, il campo Impresa esterna scompare e non viene salvato.</li>
+              <li>Il numero di operatori, se compilato, deve essere un intero da 1 a 999.</li>
+              <li>L’email deve avere un formato valido. Nome e cognome o nome squadra possono contenere al massimo 160 caratteri; gli altri campi testuali vengono ripuliti dagli spazi esterni e accettano fino a 2.000 caratteri.</li>
+              <li>Il cantiere è sempre facoltativo: indica l’assegnazione di riferimento della scheda, non registra una presenza né crea un intervento in Agenda.</li>
+            </ul>
+
+            <h3>Creare o modificare una scheda</h3>
+            <ol>
+              <li>Apri la scheda corretta tra <strong>Dipendenti</strong>, <strong>Operai</strong> e <strong>Squadre</strong>.</li>
+              <li>Seleziona <strong>Aggiungi dipendente</strong>, <strong>Aggiungi operaio</strong> o <strong>Aggiungi squadra</strong>.</li>
+              <li>Compila almeno il nome, scegli lo stato e, per una squadra, il tipo. Aggiungi il cantiere solo se vuoi collegare l’anagrafica a un lavoro preciso.</li>
+              <li>Seleziona <strong>Salva scheda</strong>. Un messaggio conferma il salvataggio e la scheda torna nell’elenco delle attive.</li>
+            </ol>
+            <p>Per aggiornare una voce, seleziona <strong>Modifica</strong> sulla scheda. Nell’editor di un dipendente o di un operaio sono presenti anche i collegamenti alle presenze e, per gli operai, alle scadenze. Se hai cambiato un campo, salva o annulla prima di seguire questi collegamenti: Imprelio evita così di perdere modifiche non confermate.</p>
+
+            <h3>Cercare, filtrare e lavorare sulle schede</h3>
+            <ul>
+              <li><strong>Cerca</strong> controlla nome, campi della scheda e nome del cantiere collegato.</li>
+              <li><strong>Stato</strong> limita l’elenco allo stato selezionato; <strong>Cantiere</strong> limita l’elenco all’assegnazione scelta.</li>
+              <li>Gli elenchi mostrano fino a 12 schede per pagina, con <strong>Indietro</strong> e <strong>Avanti</strong> quando necessario.</li>
+              <li>Dalle schede di dipendenti e operai, <strong>Presenze</strong> apre il calendario già filtrato sulla persona.</li>
+              <li>Dalla scheda di un operaio, <strong>Scadenze</strong> apre visite mediche, certificazioni e altre scadenze. Le squadre non hanno presenze o scadenze individuali.</li>
+              <li><strong>Assegnazioni veicoli</strong> permette di associare mezzi a squadre interne o esterne, operai e dipendenti per periodi distinti.</li>
+            </ul>
+
+            <h3>Archiviare, ripristinare ed eliminare</h3>
+            <p><strong>Archivia</strong> conserva la scheda nel modulo ma la sposta tra le archiviate. Usa il commutatore <strong>Archiviate</strong> per consultarla; una scheda archiviata si apre in sola lettura e può essere ripristinata. Le presenze e le scadenze già registrate restano consultabili, ma non si possono aggiungere o modificare registrazioni per una persona archiviata.</p>
+            <p><strong>Elimina</strong> è diverso da Archivia: dopo la conferma, la scheda viene spostata nel <strong>Cestino</strong>. Puoi usare il ripristino mostrato subito dopo l’operazione oppure aprire <strong>Gestione → Cestino</strong> in un secondo momento. I collegamenti storici vengono conservati, così il ripristino rende nuovamente disponibile la stessa anagrafica. Per togliere temporaneamente una persona dal lavoro corrente senza nasconderne la scheda, è preferibile cambiare stato o archiviarla.</p>
+
+            <h3>Accessi, demo e dati condivisi</h3>
+            <ul>
+              <li>Gli amministratori e i coordinatori aziendali attivi possono consultare e gestire queste anagrafiche. <strong>Gestione accessi</strong>, invece, rimane riservata agli amministratori.</li>
+              <li>Nella <strong>demo senza Supabase</strong>, i dati iniziali sono sintetici e le modifiche restano nel browser. Non sono condivise con colleghi o altri dispositivi e possono andare perse cancellando i dati del sito.</li>
+              <li>Nello <strong>spazio di lavoro con Supabase</strong>, le anagrafiche sono condivise all’interno dell’azienda e isolate dalle altre aziende. Il modulo richiede le migrazioni dell’operatività; Cestino, presenze e scadenze richiedono anche i relativi aggiornamenti del database.</li>
+            </ul>
+          </section>
+
+          <section id="presenze" class="guide-section">
+            <h2>Presenze</h2>
+            <p>Il calendario Presenze registra fasce lavorate e assenze di singoli <strong>dipendenti</strong> e <strong>operai</strong>. Le squadre non sono selezionabili: se serve attribuire ore a persone specifiche, crea le rispettive anagrafiche individuali.</p>
+
+            <h3>Aprire il calendario</h3>
+            <p><strong>Percorso principale:</strong> menu <strong>Gestione → Presenze</strong>, all’indirizzo <strong>/gestione/presenze</strong>. Puoi arrivarci anche dal pulsante <strong>Presenze</strong> in Personale e squadre o dalla singola scheda di un dipendente o operaio; in quest’ultimo caso il calendario viene aperto con la persona già selezionata.</p>
+            <ul>
+              <li><strong>Oggi</strong> riporta al mese corrente; le frecce aprono il mese precedente o successivo.</li>
+              <li>Il filtro <strong>Persona</strong> raggruppa Dipendenti e Operai. I profili archiviati restano visibili con l’indicazione “archiviato” per consultare lo storico.</li>
+              <li>Ogni giorno mostra il numero di presenze e assenze. Seleziona il giorno per vedere, modificare o aggiungere registrazioni nel pannello di dettaglio.</li>
+            </ul>
+
+            <h3>Registrare una presenza</h3>
+            <ol>
+              <li>Seleziona il giorno nel calendario e premi <strong>Nuova registrazione</strong>.</li>
+              <li>Scegli la persona, se il calendario non è già filtrato, e controlla la <strong>Data</strong>.</li>
+              <li>In <strong>Tipo</strong> scegli <strong>Presenza</strong>.</li>
+              <li>Inserisci <strong>Ora di inizio</strong> e <strong>Ora di fine</strong>.</li>
+              <li>Scegli il <strong>Luogo di lavoro</strong>: Cantiere, Magazzino oppure Ufficio. Se scegli Cantiere, indica anche quale cantiere.</li>
+              <li>Seleziona <strong>Salva registrazione</strong>.</li>
+            </ol>
+            <p>Puoi registrare più fasce nella stessa giornata, per esempio cantiere al mattino e magazzino al pomeriggio, purché gli orari non si sovrappongano.</p>
+
+            <h3>Registrare ferie o altre assenze</h3>
+            <p>I tipi disponibili sono <strong>Ferie</strong>, <strong>Permesso</strong>, <strong>Malattia</strong>, <strong>Riposo</strong> e <strong>Altra assenza</strong>.</p>
+            <ol>
+              <li>Seleziona il giorno e apri <strong>Nuova registrazione</strong>.</li>
+              <li>Scegli la persona e il tipo di assenza.</li>
+              <li>Lascia selezionato <strong>Giornata intera</strong> se l’assenza occupa tutto il giorno. Per un’assenza parziale, deselezionalo e inserisci inizio e fine.</li>
+              <li>Salva. Le assenze non prevedono luogo di lavoro né cantiere.</li>
+            </ol>
+
+            <h3>Regole sugli orari e sulle sovrapposizioni</h3>
+            <ul>
+              <li>Inizio e fine devono essere entrambi compilati; la fine deve essere successiva all’inizio nella stessa data.</li>
+              <li>Una fascia non può attraversare la mezzanotte. Per un turno notturno occorrono due registrazioni, una per ciascun giorno.</li>
+              <li>La stessa persona non può avere fasce sovrapposte, indipendentemente dal fatto che siano presenza o assenza. Fasce adiacenti, per esempio 08:00–12:00 e 12:00–16:00, sono ammesse.</li>
+              <li>Una registrazione a giornata intera occupa l’intero giorno e quindi è incompatibile con qualsiasi altra registrazione della stessa persona in quella data.</li>
+              <li>La persona deve essere un dipendente o un operaio attivo e il cantiere deve essere ancora disponibile nella stessa azienda.</li>
+            </ul>
+            <p>Imprelio non calcola automaticamente pause, straordinari o turni contrattuali: il riepilogo usa esclusivamente gli intervalli salvati.</p>
+
+            <h3>Modificare o rimuovere una registrazione</h3>
+            <ol>
+              <li>Seleziona il giorno nel calendario.</li>
+              <li>Nella registrazione interessata scegli <strong>Modifica</strong>.</li>
+              <li>Correggi persona, data, tipo, orari o luogo e salva. Se sposti la registrazione in un altro mese, Imprelio apre automaticamente quel mese.</li>
+              <li>Per cancellarla, scegli <strong>Rimuovi</strong> nell’editor e poi <strong>Conferma rimozione</strong>.</li>
+            </ol>
+            <p>Se il profilo è archiviato, lo storico rimane leggibile ma i comandi Nuova registrazione, Modifica e Rimuovi non sono disponibili. Ripristina prima la persona da <strong>Personale e squadre → Archiviate</strong>.</p>
+
+            <h3>Controllare ore e assenze nelle Statistiche</h3>
+            <p>Nel menu apri <strong>Gestione → Statistiche</strong>. Per impostazione iniziale il periodo va dal primo giorno del mese corrente a oggi.</p>
+            <ol>
+              <li>Imposta <strong>Dal</strong> e <strong>Al</strong>.</li>
+              <li>Scegli un cantiere oppure lascia <strong>Tutti i cantieri</strong>.</li>
+              <li>Premi <strong>Applica filtri</strong> e consulta la sezione <strong>Presenze e ore lavorate</strong>.</li>
+              <li>Usa <strong>Presenze CSV</strong> per esportare il dettaglio del periodo.</li>
+            </ol>
+            <ul>
+              <li>Il riepilogo mostra ore e giornate lavorate, assenze a giornata, assenze a ore e ore di assenza, con tabelle per persona, luogo e tipo di assenza.</li>
+              <li>Una giornata lavorata vale una sola volta per persona, anche con più fasce. Se la persona lavora in luoghi diversi, la giornata compare una volta in ciascun riepilogo del luogo interessato.</li>
+              <li>Le assenze a giornata sono contate separatamente e non vengono trasformate in ore.</li>
+              <li>Filtrando un singolo cantiere compaiono solo le presenze effettuate in quel cantiere; le assenze sono nascoste perché non hanno un cantiere. Seleziona Tutti i cantieri per includerle.</li>
+              <li>Eventuali dati storici con orari incompleti o non validi sono esclusi dai calcoli e indicati nel riepilogo.</li>
+            </ul>
+
+            <h3>Demo e spazio aziendale</h3>
+            <p>Nella demo sono presenti registrazioni sintetiche e ogni modifica viene salvata solo nel browser. In uno spazio Supabase, le presenze sono condivise e protette per azienda; il database impedisce anche due salvataggi concorrenti che creerebbero una sovrapposizione. Se la pagina mostra <strong>Attiva il calendario delle presenze</strong>, un amministratore tecnico deve applicare la migrazione 010. Le prestazioni con volumi aziendali molto grandi non fanno parte del collaudo documentato del prodotto.</p>
+          </section>
+
+          <section id="scadenze" class="guide-section">
+            <h2>Scadenze degli operai</h2>
+            <p>Le scadenze individuali servono per seguire visite mediche, certificazioni e altre ricorrenze degli operai. Non sono disponibili per dipendenti o squadre.</p>
+
+            <h3>Aprire la scheda delle scadenze</h3>
+            <p>Nel menu apri <strong>Gestione → Personale e squadre → Operai</strong>, quindi <strong>Scadenze</strong> sulla scheda dell’operaio. L’indirizzo ha la forma <strong>/gestione/operai/[id]/scadenze</strong>. Anche nell’editor dell’operaio è disponibile <strong>Visite, certificazioni e scadenze</strong>, purché non ci siano modifiche non salvate.</p>
+            <p>La pagina separa <strong>Scadenze attive</strong> e <strong>Storico</strong>. Le attive sono ordinate prima per data di scadenza; le voci senza data di scadenza compaiono dopo quelle datate.</p>
+
+            <h3>Aggiungere o modificare una scadenza</h3>
+            <ol>
+              <li>Apri l’operaio e seleziona <strong>Nuova scadenza</strong>.</li>
+              <li>Scegli il <strong>Tipo</strong>: Visita medica, Certificazione oppure Altra scadenza.</li>
+              <li>Per Certificazione o Altra scadenza inserisci un <strong>Titolo</strong>, fino a 160 caratteri. Per la visita medica il titolo viene impostato automaticamente su “Visita medica”.</li>
+              <li>Compila almeno una tra <strong>Data di completamento</strong> e <strong>Data di scadenza</strong>. Per una visita medica le stesse date sono presentate come visita effettuata e data prevista o scadenza.</li>
+              <li>Se compili entrambe, la scadenza deve coincidere con la data registrata oppure essere successiva.</li>
+              <li>Premi <strong>Salva scadenza</strong>. Per correggere una voce attiva, usa <strong>Modifica</strong>.</li>
+            </ol>
+
+            <h3>Come viene calcolato lo stato</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Stato</th>
+                  <th scope="col">Condizione</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Scaduta</th>
+                  <td>La data di scadenza è precedente a oggi.</td>
+                </tr>
+                <tr>
+                  <th scope="row">In scadenza</th>
+                  <td>La scadenza è oggi o entro i prossimi 30 giorni, estremi inclusi.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Scadenza futura</th>
+                  <td>La data è oltre i prossimi 30 giorni.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Senza scadenza</th>
+                  <td>È stata registrata solo una data di completamento.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Archiviata</th>
+                  <td>La voce è stata spostata nello Storico.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Solo la <strong>data di scadenza</strong> genera un avviso nel Centro notifiche. Una voce con la sola data di completamento resta nello stato Senza scadenza e non produce promemoria.</p>
+
+            <h3>Archiviare, ripristinare o eliminare</h3>
+            <ul>
+              <li><strong>Archivia</strong> sposta la voce nello Storico senza eliminarla.</li>
+              <li><strong>Ripristina</strong> riporta una voce storica tra le attive e ne ricalcola lo stato rispetto alla data corrente.</li>
+              <li><strong>Elimina</strong> sposta la voce nel Cestino; può essere ripristinata subito o in seguito da <strong>Gestione → Cestino</strong>.</li>
+            </ul>
+            <p>Se l’operaio viene archiviato, l’intera pagina diventa di consultazione: non puoi creare, modificare, archiviare o ripristinare scadenze finché non ripristini il profilo. Le voci esistenti e lo Storico restano leggibili; l’eliminazione verso il Cestino resta disponibile.</p>
+
+            <h3>Avvisi e casi da controllare</h3>
+            <ul>
+              <li>Una scadenza attiva compare nelle notifiche da 30 giorni prima e continua a comparire dopo la data finché rimane aperta.</li>
+              <li>Archiviare la scadenza o l’operaio la rimuove dagli avvisi attivi. L’evento può restare nella Cronologia notifiche.</li>
+              <li>Per un rinnovo, è consigliabile aggiornare la voce con la nuova data oppure archiviare la vecchia e crearne una nuova, in base allo storico che vuoi conservare.</li>
+              <li>Una data di completamento non chiude automaticamente la voce e non modifica la data di scadenza: verifica entrambe prima di salvare.</li>
+            </ul>
+
+            <h3>Demo e spazio aziendale</h3>
+            <p>La demo propone esempi sintetici, come una visita medica e una certificazione, e salva le modifiche soltanto nel browser. Con Supabase, le scadenze sono condivise nell’azienda e modificabili solo se l’operaio è ancora disponibile. Se appare <strong>Attiva le scadenze degli operai</strong>, occorre applicare la migrazione 011; eliminazione e ripristino dal Cestino richiedono anche le migrazioni del Cestino.</p>
+          </section>
+
+          <section id="magazzino" class="guide-section">
+            <h2>Magazzino e movimenti</h2>
+            <p>Apri <strong>Magazzino</strong> dal menu <strong>Gestione</strong>. Usa <strong>Articoli</strong> per le schede di materiali e attrezzature, <strong>Movimenti</strong> per carichi e scarichi e <strong>Veicoli</strong> per le schede dei singoli mezzi. Nelle liste puoi cercare nelle schede, consultare le registrazioni archiviate e usare i filtri disponibili per stato o cantiere.</p>
+
+            <h3>Creare un articolo e impostare la scorta minima</h3>
+            <ol>
+              <li>In <strong>Magazzino → Articoli</strong> seleziona <strong>Aggiungi articolo</strong> e compila <strong>Nome articolo</strong>. Inserisci un <strong>Codice articolo</strong> per ritrovarlo o distinguerlo da articoli simili.</li>
+              <li>Scegli la <strong>Categoria</strong>. Per le scorte sono disponibili <strong>Materiali</strong>, <strong>Attrezzature</strong>, <strong>Consumabili</strong>, <strong>Dispositivi di protezione</strong> e <strong>Altro</strong>. Per la categoria <strong>Veicoli</strong> consulta la sezione dedicata.</li>
+              <li>Scegli l’<strong>Unità di misura</strong> da usare per tutti i movimenti dell’articolo. Le opzioni sono pezzi (pz), metri (m), metri quadrati (m²), metri cubi (m³), chilogrammi (kg), litri (l) e confezioni (conf).</li>
+              <li>Imposta la <strong>Scorta minima</strong> nella stessa unità, oppure lascia la soglia a zero. Puoi completare la scheda con <strong>Posizione in magazzino</strong> e <strong>Note</strong>. Lo <strong>Stato</strong> è <strong>Attivo</strong> o <strong>Fuori uso</strong>. Seleziona <strong>Salva scheda</strong>.</li>
+            </ol>
+            <p>La scheda mostra <strong>Disponibilità</strong> e <strong>Scorta minima</strong>. La disponibilità è il totale dei carichi meno gli scarichi dei movimenti attivi. Con disponibilità strettamente inferiore alla soglia compare <strong>Sotto scorta minima</strong>. Per registrare la quantità iniziale, crea un carico dopo aver salvato l’articolo.</p>
+
+            <h3>Registrare un carico o uno scarico</h3>
+            <ol>
+              <li>Da <strong>Magazzino → Movimenti</strong> seleziona <strong>Aggiungi movimento</strong>. In alternativa, seleziona <strong>Carico / scarico</strong> dalla scheda dell’articolo per trovarlo già selezionato.</li>
+              <li>Inserisci <strong>Descrizione movimento</strong> e <strong>Data movimento</strong>. Seleziona l’<strong>Articolo</strong>, quindi <strong>Carico</strong> in ingresso o <strong>Scarico</strong> in uscita nel campo <strong>Tipo movimento</strong>.</li>
+              <li>Inserisci una <strong>Quantità</strong> positiva nell’unità dell’articolo. Puoi usare fino a tre cifre decimali con la virgola o il punto decimale, senza separatori delle migliaia. Il valore minimo è 0,001.</li>
+              <li>Per attribuire il movimento a un lavoro, seleziona il <strong>Cantiere</strong>. Puoi lasciare <strong>Nessun cantiere</strong> per un movimento generale come il carico iniziale. Aggiungi eventuali <strong>Note</strong> e scegli <strong>Salva scheda</strong>. Lo stato del movimento è <strong>Registrato</strong>.</li>
+            </ol>
+            <p>Nella demo, <strong>Telaio ponteggio 105</strong> ha una scorta minima di 20 pezzi. Un carico di 120 e uno scarico di 36 lasciano una disponibilità di 84 pezzi. Uno scarico successivo di 65 la porta a 19 e fa comparire l’avviso.</p>
+
+            <h3>Consultare, correggere e archiviare</h3>
+            <ul>
+              <li>Filtra i <strong>Movimenti</strong> per cantiere o apri il collegamento <strong>Magazzino</strong> dalla scheda del cantiere per iniziare con quel filtro.</li>
+              <li>Usa <strong>Modifica</strong> per correggere una scheda attiva. Imprelio blocca le modifiche, le archiviazioni, le eliminazioni e i ripristini di movimenti che porterebbero la giacenza sotto zero. Se il carico di 120 dell’esempio viene archiviato mentre lo scarico di 36 è attivo, il totale diventerebbe negativo e l’operazione viene rifiutata.</li>
+              <li><strong>Archivia</strong> sposta la scheda nella vista <strong>Archiviate</strong>. Da lì puoi aprire la scheda in sola lettura o riportarla tra quelle attive con <strong>Ripristina</strong>. Un movimento archiviato esce dal calcolo della disponibilità. Per archiviare o eliminare un articolo con movimenti attivi occorre prima gestire quei movimenti.</li>
+              <li><strong>Elimina</strong> sposta la scheda nel <strong>Cestino</strong> dopo conferma. Per riattivare un movimento, anche il relativo articolo deve essere disponibile. I movimenti storici di un veicolo restano consultabili sotto <strong>Movimenti → Archiviate</strong> e non tornano a incrementare o decrementare le scorte.</li>
+            </ul>
+          </section>
+
+          <section id="veicoli" class="guide-section">
+            <h2>Veicoli, assegnazioni e manutenzione</h2>
+            <p>Gestisci ogni mezzo con una scheda individuale in <strong>Magazzino → Veicoli</strong>. Usa le <strong>Assegnazioni veicoli</strong> per prenotarlo, il <strong>Registro di utilizzo</strong> per annotare l’uso effettivo e l’anagrafica per impostare le date di fermo. I mezzi non hanno unità di misura, scorta minima, carichi o scarichi.</p>
+
+            <h3>Creare e consultare la scheda veicolo</h3>
+            <ol>
+              <li>Apri <strong>Magazzino → Veicoli</strong> e seleziona <strong>Nuovo veicolo</strong>. Inserisci <strong>Nome veicolo</strong> e scegli <strong>Attivo</strong> o <strong>Fuori uso</strong>.</li>
+              <li>Aggiungi <strong>Codice articolo</strong>, <strong>Targa</strong>, <strong>Matricola</strong>, <strong>Categoria veicolo</strong>, <strong>Posizione del veicolo</strong> e <strong>Note</strong> quando disponibili. Inserisci le date di assicurazione, bollo, revisione e tagliando, quindi seleziona <strong>Salva scheda</strong>.</li>
+              <li>Cerca il mezzo anche per targa o matricola, apri <strong>Scheda veicolo</strong> e consulta <strong>Anagrafica</strong>, <strong>Scadenze</strong>, <strong>Assegnazioni</strong>, <strong>Registro di utilizzo</strong> e <strong>Interventi di manutenzione</strong>. Usa <strong>Modifica anagrafica</strong> per aggiornare una scheda attiva.</li>
+            </ol>
+            <p>La <strong>Posizione in anagrafica</strong> è il riferimento inserito nella scheda. L’<strong>Ultima posizione registrata</strong> deriva dalla data di fine dell’utilizzo concluso più recente che indica un luogo o un cantiere. Se non esistono registrazioni utilizzabili, la scheda mostra <strong>Nessuna registrazione</strong>.</p>
+            <p>Le scadenze sono <strong>Scaduta</strong> se la data è passata, <strong>In scadenza</strong> da oggi a 30 giorni, <strong>Scadenza futura</strong> oltre 30 giorni e <strong>Senza scadenza</strong> se la data non è indicata. Le scadenze ravvicinate compaiono anche nel <strong>Centro notifiche</strong>.</p>
+
+            <h3>Prenotare un mezzo per uno o più periodi</h3>
+            <ol>
+              <li>Da <strong>Magazzino → Assegnazioni veicoli</strong> seleziona <strong>Nuova assegnazione</strong>. Puoi aprire il modulo anche dalla scheda del mezzo o dal comando <strong>Assegna</strong> nella lista <strong>Veicoli</strong>.</li>
+              <li>Scegli un <strong>Veicolo dal magazzino</strong> attivo e non archiviato. Se manca, puoi usare <strong>Crea un veicolo</strong> direttamente nel modulo. In questo caso sono richiesti il nome e almeno uno tra targa e matricola.</li>
+              <li>Nel campo <strong>Assegna a</strong> seleziona una sola destinazione tra cantiere, squadra interna, squadra esterna, operaio o dipendente. Se la voce manca, verifica che la scheda di riferimento sia disponibile.</li>
+              <li>Inserisci <strong>Data di inizio</strong> e <strong>Data di fine</strong>. Le due date sono comprese e possono coincidere per una prenotazione giornaliera. Usa <strong>Aggiungi periodo</strong> per prenotare lo stesso mezzo per la stessa destinazione in più intervalli, fino a 50 per assegnazione.</li>
+              <li>Seleziona <strong>Salva assegnazione</strong>. Se il veicolo è già assegnato in uno dei giorni selezionati, oppure è in fermo, scegli altre date o riprogramma l’assegnazione esistente. Due periodi possono essere consecutivi quando il secondo inizia il giorno successivo alla fine del primo.</li>
+            </ol>
+            <p>Per ritrovare una prenotazione cerca per mezzo o destinazione e usa <strong>Tutte</strong>, <strong>In corso</strong>, <strong>Programmate</strong> o <strong>Concluse</strong>. La scheda del mezzo separa i periodi attuali e futuri dai <strong>Periodi conclusi</strong>. Usa <strong>Modifica</strong> per cambiare i periodi, oppure <strong>Rimuovi</strong> e <strong>Conferma rimozione</strong> per rimuovere tutti i periodi di quella assegnazione.</p>
+            <p>Se crei il mezzo nel modulo e il passaggio successivo di salvataggio dell’assegnazione fallisce, Imprelio avvisa quando il mezzo è già stato inserito in magazzino. Correggi i dati dell’assegnazione e riutilizza la scheda appena creata.</p>
+
+            <h3>Bloccare le prenotazioni durante un fermo</h3>
+            <ol>
+              <li>Dalla <strong>Scheda veicolo</strong> seleziona <strong>Modifica anagrafica</strong> e attiva <strong>Manutenzione (meccanico)</strong>.</li>
+              <li>Imposta <strong>Inizio manutenzione</strong> e <strong>Fine manutenzione</strong> e seleziona <strong>Salva scheda</strong>. Se il fermo si sovrappone a un’assegnazione, modifica prima la prenotazione.</li>
+              <li>Durante il periodo il mezzo risulta <strong>Fuori uso</strong>, estremi inclusi. Il giorno successivo torna automaticamente allo stato impostato nell’anagrafica. Per prenotare fuori dal fermo puoi usare <strong>Assegna per altre date</strong>, se il mezzo è altrimenti attivo.</li>
+            </ol>
+            <p>Da <strong>Assegnazioni veicoli → Manutenzioni</strong> trovi le date e gli stati dei fermi. Un intervento di manutenzione nel registro serve a documentare il lavoro. Per bloccare le prenotazioni nelle stesse date, registra anche il fermo nell’anagrafica.</p>
+
+            <h3>Annotare l’utilizzo effettivo o un intervento</h3>
+            <ul>
+              <li>In <strong>Registro di utilizzo</strong> scegli <strong>Registra utilizzo</strong>. Inserisci la <strong>Descrizione</strong>, le date di inizio e fine, <strong>Chi ha utilizzato il veicolo</strong> e almeno uno tra <strong>Cantiere</strong> e <strong>Luogo</strong>. Cerca l’operatore fra persone e squadre registrate. Inserisci eventuali note e scegli <strong>Salva utilizzo</strong>. Un utilizzo effettivo non può terminare in una data futura.</li>
+              <li>In <strong>Interventi di manutenzione</strong> scegli <strong>Nuovo intervento</strong>. Inserisci la descrizione e seleziona <strong>Manutenzione ordinaria</strong> oppure <strong>Manutenzione straordinaria</strong>. Indica lo stato <strong>Programmato</strong> o <strong>Eseguito</strong> e le date. Per un intervento eseguito la fine non può essere futura. Operatore, cantiere, luogo e note sono facoltativi. Seleziona <strong>Salva intervento</strong>.</li>
+              <li>Usa <strong>Modifica</strong> sulle registrazioni e filtra gli interventi per tipo e stato. Nella scheda di un veicolo archiviato il registro resta consultabile in sola lettura.</li>
+            </ul>
+            <p>In modalità dimostrativa, le modifiche a scorte, mezzi, assegnazioni e registro restano nel browser. Nelle installazioni aziendali, un avviso di aggiornamento richiesto indica che il database non dispone ancora delle funzioni necessarie. L’assegnazione diretta ai cantieri e i fermi richiedono la migrazione 009, il registro richiede la 016 e la separazione dei vecchi movimenti veicolo dalle scorte è completata dalla 020.</p>
+          </section>
+
+          <section id="documenti" class="guide-section">
+            <h2>Documenti e archivio</h2>
+            <p>Usa <strong>Documenti</strong> per registrare fatture, ordini e DDT con righe, quantità e stati operativi. Usa <strong>Archivio documenti</strong> per conservare un PDF o una foto esistente, insieme ai dati ricavati dal file. Per lavorare sul preventivo di un computo seleziona <strong>Preventivi da PDF</strong>.</p>
+
+            <h3>Registrare fatture, ordini e DDT</h3>
+            <ol>
+              <li>Dal menu <strong>Gestione</strong> apri <strong>Documenti</strong> e scegli <strong>Fatture</strong>, <strong>Ordini</strong> o <strong>DDT</strong>. Dalla scheda di un cantiere puoi aprire lo stesso elenco già filtrato sul lavoro.</li>
+              <li>Premi <strong>Aggiungi fattura</strong>, <strong>Aggiungi ordine</strong> o <strong>Aggiungi DDT</strong>. Indica numero, data e stato. Se la registrazione riguarda un lavoro, seleziona <strong>Cantiere</strong>. Per i documenti generali puoi scegliere <strong>Nessun cantiere</strong>.</li>
+              <li>Compila i dati del tipo di documento e aggiungi almeno una riga in <strong>Righe del documento</strong>. Ogni riga richiede <strong>Descrizione</strong>, <strong>Unità di misura</strong> e <strong>Quantità</strong>. Per fatture e ordini inserisci anche il <strong>Prezzo unitario (€)</strong>.</li>
+              <li>Usa <strong>Aggiungi riga</strong> per inserire altre voci, fino a 100. Controlla quantità e prezzi e premi <strong>Salva scheda</strong>. Per fatture e ordini la scheda calcola imponibile, IVA e totale con l’<strong>Aliquota IVA (%)</strong> impostata sul documento.</li>
+            </ol>
+            <ul>
+              <li><strong>Fatture.</strong> Scegli <strong>Emessa</strong> o <strong>Ricevuta</strong> e indica <strong>Cliente o fornitore</strong>. Registra, se pertinenti, <strong>Scadenza pagamento</strong> e <strong>Data pagamento</strong>. Gli stati sono <strong>Bozza</strong>, <strong>Da saldare</strong> e <strong>Saldata</strong>.</li>
+              <li><strong>Ordini.</strong> Inserisci <strong>Fornitore</strong> e, se disponibili, <strong>Consegna prevista</strong> e <strong>Luogo di consegna</strong>. Aggiorna lo stato tra <strong>Bozza</strong>, <strong>Inviato</strong>, <strong>Confermato</strong>, <strong>Consegnato</strong> e <strong>Annullato</strong>.</li>
+              <li><strong>DDT.</strong> Indica <strong>Direzione</strong> (<strong>In entrata</strong> o <strong>In uscita</strong>), <strong>Mittente</strong>, <strong>Destinatario</strong>, <strong>Luogo di consegna</strong> e <strong>Causale del trasporto</strong>. Puoi aggiungere <strong>Trasportatore</strong> e <strong>Numero colli</strong>. Gli stati sono <strong>Bozza</strong>, <strong>In transito</strong>, <strong>Consegnato</strong> e <strong>Annullato</strong>.</li>
+            </ul>
+            <p>Sono registri interni. Per una fattura emessa o un ordine inviato tramite i canali aziendali, usa lo stato per riportare l’avvenuto invio o pagamento. Registra carichi e scarichi in <strong>Magazzino</strong> per aggiornare le giacenze.</p>
+            <p>Per ritrovare una scheda usa <strong>Cerca</strong>, <strong>Stato</strong> e <strong>Cantiere</strong>. Con <strong>Modifica</strong> aggiorni una scheda attiva. Con <strong>Archivia</strong> la sposti in <strong>Archiviate</strong>, dove puoi consultarla con <strong>Apri</strong> o riattivarla con <strong>Ripristina</strong>. <strong>Elimina</strong> trasferisce invece la scheda nel <strong>Cestino</strong> dopo conferma. Per i riepiloghi delle fatture e le relative esportazioni CSV usa <strong>Bilanci e conti</strong>.</p>
+
+            <h3>Importare un documento con riconoscimento del testo</h3>
+            <ol>
+              <li>Apri <strong>Archivio documenti</strong> → <strong>Importa documento</strong> → <strong>Scegli un file</strong>. Sono accettati PDF, JPG o JPEG, PNG e WebP fino a 25 MB. Puoi partire anche da <strong>Importa documento</strong> in <strong>Documenti</strong> e <strong>Computi metrici</strong>, o da <strong>Importa un preventivo esistente</strong> in <strong>Preventivi da PDF</strong>.</li>
+              <li>Attendi la lettura. Imprelio estrae nel browser il testo selezionabile dei PDF e usa l’OCR, cioè il riconoscimento ottico dei caratteri, per foto e pagine scansionate. I modelli sono italiano e inglese. Per ogni PDF analizza fino alle prime 100 pagine e tenta l’OCR su un massimo di quattro pagine con poco testo selezionabile.</li>
+              <li>Confronta sempre il risultato con l’originale, anche se compare <strong>Dati estratti</strong>. <strong>Da verificare</strong> segnala un’estrazione parziale o incerta. Se compare <strong>Nessun dato rilevato</strong>, puoi inserire i dati a mano e conservare ugualmente il file.</li>
+              <li>Scegli il <strong>Tipo di documento</strong> tra <strong>Fattura</strong>, <strong>Preventivo</strong>, <strong>Computo metrico</strong> e <strong>Altro documento</strong>. Verifica <strong>Titolo</strong>, <strong>Numero</strong>, <strong>Data documento</strong>, <strong>Emittente</strong>, <strong>Destinatario</strong>, <strong>Totale</strong> e <strong>Valuta</strong>. Indica il cantiere se pertinente. Espandi <strong>Testo riconosciuto</strong> se vuoi controllare o correggere la trascrizione.</li>
+              <li>Premi <strong>Salva documento</strong>. La conferma <strong>Documento e originale salvati</strong> segnala che la scheda e il file sono disponibili nell’elenco. Per creare anche una registrazione con righe, prezzi e scadenze usa la relativa scheda in <strong>Documenti</strong>.</li>
+            </ol>
+            <p>Se il file è illeggibile, prova una scansione più nitida o un PDF di cui riesci a selezionare il testo. Nel campo <strong>Totale</strong> inserisci il numero senza simbolo di valuta e senza separatori delle migliaia. Usa il codice a tre lettere, per esempio <strong>EUR</strong>, in <strong>Valuta</strong>.</p>
+
+            <h3>Consultare, aprire e recuperare un originale</h3>
+            <p>In <strong>Documenti salvati</strong> cerca per nome, numero o cantiere, oppure filtra con <strong>Tutti i tipi</strong>. Clicca il titolo della riga per aprire <strong>Dati del documento</strong> e consulta <strong>Testo riconosciuto</strong>. <strong>Apri file</strong> visualizza l’originale in un’altra scheda. In demo, se il browser blocca l’apertura, consenti la finestra per questo sito e riprova.</p>
+            <p>I dati della scheda si correggono prima del salvataggio. La finestra <strong>Dati del documento</strong> serve alla consultazione. Se è necessario sostituire un’importazione, conserva l’originale, importa di nuovo il file verificando i campi e rimuovi la scheda precedente dopo aver controllato quella nuova. Il pulsante <strong>Elimina</strong> porta il documento e il relativo file nel <strong>Cestino</strong>, da cui si può ripristinare la voce nelle installazioni con il supporto attivo.</p>
+            <p>Nell’archivio confluiscono anche gli originali salvati da <strong>Preventivi da PDF</strong>, quando l’integrazione è disponibile. In demo, i file e i dati restano nel browser usato. Se <strong>Importa documento</strong> è disabilitato e compare il messaggio sulla migrazione 017, inoltralo a chi gestisce l’installazione. L’archiviazione online dei PDF dei computi usa la migrazione 006, l’importazione generica la 017 e la gestione nel cestino delle nuove importazioni la 019. La disponibilità effettiva dipende dalle migrazioni applicate all’installazione aziendale.</p>
+          </section>
+
+          <section id="computi" class="guide-section">
+            <h2>Computi metrici, preventivi e listino</h2>
+            <p>Con <strong>Computi metrici</strong> costruisci a mano misurazioni e prezzi di un cantiere. Con <strong>Preventivi da PDF</strong> prepari un’offerta partendo dalle voci di un computo già esistente. Con <strong>Archivio documenti</strong> conservi invece un computo o un preventivo come documento da consultare.</p>
+
+            <h3>Compilare un computo metrico</h3>
+            <ol>
+              <li>Apri <strong>Computi metrici</strong> → <strong>Elenco computi</strong> → <strong>Aggiungi computo metrico</strong>. Puoi raggiungere l’elenco anche dalla scheda del cantiere.</li>
+              <li>Indica <strong>Titolo computo</strong>, <strong>Data computo</strong> e <strong>Cantiere</strong>. Se serve, usa <strong>Crea cantiere dal computo</strong> e collega il nuovo cantiere a un cliente. Imposta <strong>Stato</strong> su <strong>Bozza</strong>, <strong>In revisione</strong> o <strong>Approvato</strong>. Aggiungi <strong>Revisione</strong> e <strong>Note</strong> quando utili.</li>
+              <li>In <strong>Misurazioni</strong> compila almeno una riga, con <strong>Descrizione</strong>, <strong>Unità di misura</strong>, <strong>Quantità / parti uguali</strong> e <strong>Prezzo unitario (€)</strong>. Puoi indicare il <strong>Codice voce</strong> e, dove fanno parte della misurazione, <strong>Lunghezza</strong>, <strong>Larghezza</strong> e <strong>Altezza / peso unitario</strong>.</li>
+              <li>Controlla <strong>Quantità misura</strong> e <strong>Totale lavori</strong>. Imprelio moltiplica le parti uguali per le dimensioni compilate, trattando ogni casella dimensionale vuota come fattore 1. L’importo di riga usa questa quantità e il prezzo unitario. Per esempio, <strong>2</strong> parti uguali da <strong>10</strong> per <strong>3</strong>, con altezza vuota, danno <strong>60 m²</strong>. A <strong>8,00 €/m²</strong> la riga vale <strong>480,00 €</strong>.</li>
+              <li>Usa <strong>Aggiungi riga</strong> per altre misurazioni, fino a 100, e premi <strong>Salva scheda</strong>. Per consultare o aggiornare il computo usa l’elenco e i filtri <strong>Cerca</strong>, <strong>Stato</strong> e <strong>Cantiere</strong>. Le schede archiviate si consultano da <strong>Archiviate</strong>.</li>
+            </ol>
+            <p>Se hai già la quantità finale, inseriscila in <strong>Quantità / parti uguali</strong> e lascia vuote le dimensioni. Usa misure coerenti con l’unità dichiarata. Inserire sia la quantità finale sia le dimensioni la moltiplicherebbe di nuovo.</p>
+
+            <h3>Importare le voci di un computo per creare un preventivo</h3>
+            <ol>
+              <li>Apri <strong>Preventivi da PDF</strong> dal menu oppure da <strong>Computi metrici</strong> → <strong>Apri Preventivi da PDF</strong>. Premi <strong>Importa PDF</strong> o trascina il file nell’area indicata. Il lettore lavora nel browser. Servono PDF con testo selezionabile e una tabella in un formato riconosciuto, fino a <strong>25 MB</strong>, <strong>100 pagine</strong> e <strong>350 voci</strong>.</li>
+              <li>In <strong>Revisione del preventivo</strong>, verifica il <strong>Titolo preventivo</strong>, usa <strong>Cliente</strong> per filtrare e seleziona <strong>Cantiere</strong>. Se manca un’anagrafica, usa <strong>Nuovo cliente</strong>. Con <strong>Crea cantiere dal computo</strong> puoi riutilizzare i dati individuati in testata. Controlla i dati proposti prima di salvare il nuovo cantiere.</li>
+              <li>Confronta le voci importate con il PDF. Ogni riga mostra riferimento, pagina, eventuale codice, quantità, unità e, quando rilevato, il prezzo nel PDF. Controlla <strong>Prezzo tuo (€)</strong>, che è il prezzo effettivo dell’offerta. Puoi inserire il prezzo a mano o premere <strong>Usa listino</strong> per tornare al prezzo abbinato automaticamente.</li>
+              <li>Usa <strong>Da verificare</strong> per trovare le voci incluse con dati incompleti o incongruenti. Correggi <strong>Quantità</strong>, <strong>Unità</strong> e prezzo. Se quantità e importo del PDF non coincidono, confronta l’originale e usa <strong>Conferma quantità</strong> solo dopo la verifica. Con <strong>Modifica testo</strong> puoi aggiornare titolo e descrizione stampati con <strong>Applica modifiche</strong>. L’abbinamento del listino continua a usare il testo originale della voce.</li>
+              <li>Togli la spunta alle voci che scegli di escludere. Il comando <strong>Escludi voci da verificare</strong>, quando disponibile, esclude in blocco le voci incluse ancora irrisolte. Ricontrolla le esclusioni dalla vista <strong>Tutte</strong> prima di salvare. Se il lettore segnala pagine senza tabella riconosciuta, confronta le pagine con il preventivo e spunta <strong>Ho verificato che le voci importate coprono il preventivo</strong> solo dopo il controllo.</li>
+              <li>Controlla il <strong>Totale lavori</strong>, indicato con <strong>IVA esclusa</strong>. Un <strong>Totale parziale</strong> segnala che ci sono voci incluse ancora da verificare. Per procedere servono titolo, cantiere, almeno una voce inclusa valida, prezzi completati e conferma degli eventuali avvisi di copertura.</li>
+              <li>Premi <strong>Salva preventivo</strong> per salvare nel gestionale. Con <strong>Stampa o salva PDF</strong> puoi stampare o scegliere una destinazione PDF nella finestra di stampa del browser. Per ritrovare il preventivo in Imprelio, verifica che compaia in <strong>Preventivi salvati</strong>.</li>
+            </ol>
+            <p>Se il PDF è una scansione, chiedi una versione con testo selezionabile per estrarre le voci. Puoi comunque conservare la scansione in <strong>Archivio documenti</strong>. Se il computo supera i limiti, dividilo in più PDF. Se compare <strong>Dati del cantiere</strong> senza righe importate, l’app ha trovato elementi della testata: puoi usarli per creare il cantiere, poi ripartire da un computo compatibile per generare il preventivo.</p>
+
+            <h3>Impostare e riusare il listino aziendale</h3>
+            <ol>
+              <li>In <strong>Preventivi da PDF</strong> espandi <strong>Listino aziendale</strong> e premi <strong>Aggiungi prezzo</strong>. Puoi anche partire da una riga importata con <strong>Aggiungi al listino</strong>.</li>
+              <li>Compila <strong>Nome lavorazione</strong>, <strong>Unità di misura</strong> e <strong>Prezzo unitario (€)</strong>. Aggiungi almeno un criterio di abbinamento fra <strong>Codice nel computo</strong> e <strong>Parole nel titolo o all’inizio della descrizione</strong>. Se lo stesso codice ricorre in più voci, usa entrambi per distinguere le lavorazioni.</li>
+              <li>In <strong>Tipo di prezzo</strong> scegli <strong>Senza mesi inclusi</strong>, <strong>Noleggio incluso</strong> o <strong>Mese aggiuntivo</strong>. Con <strong>Noleggio incluso</strong> indica i <strong>Mesi di noleggio inclusi</strong>, da 1 a 120. Premi <strong>Salva prezzo</strong>.</li>
+              <li>Se una voce rimane senza prezzo, confronta codice, parole, unità, tipo e durata. Per scostamenti o per più prezzi compatibili scegli il prezzo corretto e inseriscilo in <strong>Prezzo tuo (€)</strong>. Per aggiornare una regola usa <strong>Modifica</strong> dal listino o <strong>Apri prezzo di listino</strong> dalla voce abbinata.</li>
+            </ol>
+            <p>Per esempio, puoi assegnare il prezzo di un allestimento di ponteggio in <strong>m²</strong> con un mese di noleggio incluso a una regola <strong>Noleggio incluso</strong> da <strong>1</strong> mese, e un prezzo distinto in <strong>m²/mese</strong> alla regola <strong>Mese aggiuntivo</strong>. La <strong>Durata da verificare</strong> richiede una verifica del testo originale. Quando riapri un preventivo salvato ritrovi le voci incluse e i prezzi già applicati. Se vuoi ricalcolare una voce con il listino corrente, scegli <strong>Usa listino</strong> sulla riga e salva di nuovo.</p>
+
+            <h3>Conservare il computo originale e riaprire i preventivi</h3>
+            <ul>
+              <li><strong>Salva PDF originale.</strong> Seleziona o crea il cantiere e usa questo comando anche durante la revisione. Quando l’archivio è attivo, il salvataggio del preventivo da un file appena selezionato può archiviare anche l’originale associato. Controlla la conferma <strong>PDF originale salvato nel cantiere</strong> o verifica la riga in archivio.</li>
+              <li><strong>Archivio computi PDF.</strong> Espandi il pannello per ritrovare gli originali e usa <strong>Scarica PDF</strong>. Il PDF del computo originale e quello generato con <strong>Stampa o salva PDF</strong> sono due file distinti. L’originale mantiene il contenuto di partenza. Il PDF di stampa contiene le voci incluse con i prezzi della tua offerta.</li>
+              <li><strong>Preventivi salvati.</strong> Espandi il pannello e premi <strong>Apri</strong> sulla scheda per consultare, modificare o stampare di nuovo il preventivo. Dopo una modifica premi <strong>Salva preventivo</strong>. Se inizi un’altra importazione o torni al menu con modifiche in sospeso, il gestionale può chiederti se vuoi abbandonarle.</li>
+              <li><strong>Cestino.</strong> <strong>Elimina</strong> in <strong>Preventivi salvati</strong> sposta il preventivo nel cestino. L’originale ha un’azione <strong>Elimina</strong> separata in <strong>Archivio computi PDF</strong>. Controlla il tipo di elemento prima di confermare, quindi usa <strong>Ripristina</strong> se hai rimosso la voce per errore.</li>
+            </ul>
+          </section>
+
+          <section id="notifiche" class="guide-section">
+            <h2>Notifiche</h2>
+            <p>Le notifiche di Imprelio sono promemoria calcolati dai dati del gestionale. Non sono email, messaggi push o attività assegnate: per far scomparire un avviso attivo bisogna aggiornare la scheda che lo genera, completarla, rinnovarne la data oppure archiviarla quando appropriato.</p>
+
+            <h3>Campanella e Centro notifiche</h3>
+            <ul>
+              <li>La <strong>campanella</strong> nella barra superiore carica gli avvisi quando viene aperta e mostra al massimo i primi sei, già ordinati per urgenza. Seleziona un avviso per aprire la scheda collegata.</li>
+              <li>Il pulsante <strong>Centro notifiche</strong> in fondo alla campanella apre la vista <strong>Cronologia</strong>.</li>
+              <li>Per vedere direttamente gli avvisi correnti usa il menu <strong>Operatività → Notifiche</strong>, all’indirizzo <strong>/notifiche</strong>, oppure seleziona la vista <strong>Attive</strong> nel Centro.</li>
+              <li><strong>Aggiorna</strong> rilegge tutte le fonti. La pagina si aggiorna anche all’apertura e quando torni alla scheda del browser; non esegue un controllo push continuo in background.</li>
+            </ul>
+
+            <h3>Quali avvisi vengono mostrati</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Categoria</th>
+                  <th scope="col">Avvisi attivi</th>
+                  <th scope="col">Collegamento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Agenda</th>
+                  <td>Interventi non completati in ritardo, previsti oggi o nei prossimi 7 giorni.</td>
+                  <td>Apre l’Agenda sulla data dell’intervento.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Scadenze</th>
+                  <td>Fatture ancora aperte con scadenza passata o entro 30 giorni; ordini Inviati o Confermati con consegna passata o entro 30 giorni.</td>
+                  <td>Apre la fattura o l’ordine nei Documenti.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Computi e preventivi</th>
+                  <td>Computi in Bozza o In revisione; computi approvati e preventivi da PDF salvati negli ultimi 30 giorni; PDF archiviati ancora in attesa di un preventivo.</td>
+                  <td>Apre il computo, il preventivo o l’Archivio computi PDF.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Operai</th>
+                  <td>Visite, certificazioni e altre scadenze attive già scadute o in scadenza entro 30 giorni.</td>
+                  <td>Apre le scadenze dell’operaio.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Veicoli</th>
+                  <td>Assicurazione, bollo, revisione e tagliando dei veicoli non archiviati, già scaduti o in scadenza entro 30 giorni.</td>
+                  <td>Apre la scheda del veicolo.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>I limiti di 7 e 30 giorni includono la data finale. Non c’è invece un limite all’indietro: un elemento scaduto continua a comparire finché la sua condizione rimane aperta. Per i PDF in attesa, Imprelio confronta cantiere e nome del file con i preventivi salvati; anche un preventivo poi spostato nel Cestino conta come già gestito.</p>
+
+            <h3>Priorità, filtri e ordine</h3>
+            <ul>
+              <li><strong>Urgenti</strong> comprende date già superate e scadenze di oggi.</li>
+              <li><strong>Da seguire</strong> comprende scadenze future nella finestra prevista e attività senza data che richiedono lavorazione, come computi in bozza o PDF da preventivare.</li>
+              <li><strong>Informative</strong> comprende risultati recenti, come computi approvati e preventivi pronti, oltre agli elementi passati nella Cronologia.</li>
+            </ul>
+            <p>Seleziona <strong>Tutte</strong>, Urgenti, Da seguire o Informative e combina la scelta con il filtro <strong>Categoria</strong>. I contatori di priorità si riferiscono alla categoria corrente. Il Centro mostra 12 risultati per pagina; gli urgenti vengono prima, poi gli elementi da seguire e infine le informative. Per le priorità operative, le date più vicine vengono mostrate per prime.</p>
+
+            <h3>Risolvere un avviso</h3>
+            <ul>
+              <li>Per un intervento, apri Agenda e portalo a <strong>Completato</strong> quando il lavoro è concluso.</li>
+              <li>Per una fattura, registra lo stato <strong>Saldata</strong>; per un ordine, usa <strong>Consegnato</strong> o <strong>Annullato</strong> quando corrisponde alla realtà.</li>
+              <li>Per una scadenza di operaio o veicolo, registra il rinnovo con la nuova data oppure archivia la voce non più valida.</li>
+              <li>Per un computo, completa il passaggio da Bozza o In revisione; per un PDF in attesa, salva il relativo preventivo.</li>
+              <li>Torna al Centro e usa <strong>Aggiorna</strong> se l’avviso è ancora visibile dopo il salvataggio.</li>
+            </ul>
+            <p>Non esistono comandi “Letta”, “Ignora” o “Posticipa”: la campanella non misura i non letti e chiudere il pannello non cambia lo stato dell’avviso.</p>
+
+            <h3>Cronologia</h3>
+            <p>La vista <strong>Cronologia</strong>, all’indirizzo <strong>/notifiche?vista=cronologia</strong>, unisce avvisi attivi, eventi passati ricostruibili dalle schede e avvisi già rilevati durante precedenti aperture o aggiornamenti. Un elemento non più attivo viene marcato <strong>Passata</strong> e conserva il collegamento alla scheda, se questa è ancora disponibile.</p>
+            <ul>
+              <li>La cronologia è personale per utente e azienda: due colleghi possono aver aperto il Centro in momenti diversi e quindi avere uno storico salvato differente.</li>
+              <li>Non è un registro di audit completo. Un evento mai rilevato e non più ricostruibile dalla scheda potrebbe non comparire.</li>
+              <li>Quando una data cambia, la vecchia occorrenza può restare nella Cronologia come passata mentre il nuovo promemoria segue la nuova data.</li>
+              <li>Se la migrazione della cronologia non è disponibile, gli avvisi attivi continuano a funzionare ma il Centro segnala che lo storico salvato non è disponibile.</li>
+            </ul>
+
+            <h3>Errori parziali, demo e dati reali</h3>
+            <ul>
+              <li>Se una fonte non può essere letta, il Centro mostra <strong>Aggiornamento parziale</strong> e nomina le categorie che potrebbero essere incomplete. Gli altri avvisi rimangono utilizzabili.</li>
+              <li>Nella demo, gli avvisi derivano dai dati sintetici e dalle modifiche del browser; anche la cronologia è locale e non è condivisa. Un errore o la cancellazione dell’archiviazione del browser può renderla indisponibile.</li>
+              <li>Nello spazio Supabase, tutti i membri aziendali attivi possono vedere gli avvisi dell’azienda, mentre la cronologia salvata è separata per utente. Le policy impediscono di leggere dati di altre aziende.</li>
+              <li>Gli avvisi dei PDF in attesa richiedono la migrazione 012; la cronologia persistente richiede la 015. Presenze e scadenze operai dipendono rispettivamente dalle migrazioni 010 e 011, oltre agli aggiornamenti di base dei relativi moduli.</li>
+            </ul>
+          </section>
+
+          <section id="statistiche" class="guide-section">
+            <h2>Statistiche e resoconti</h2>
+            <p>Apri <strong>Statistiche</strong> dal menu Gestione. La pagina combina l’operatività, le ore registrate e gli indicatori ricavati dalle fatture interne.</p>
+            <h3>Imposta il perimetro del resoconto</h3>
+            <ol>
+              <li>Imposta <strong>Dal</strong> e <strong>Al</strong>. Il periodo iniziale va dal primo giorno del mese alla data corrente. Le date del filtro sono incluse.</li>
+              <li>Lascia <strong>Tutti i cantieri</strong> per il riepilogo aziendale o seleziona un cantiere per concentrarti su quel lavoro.</li>
+              <li>Premi <strong>Applica filtri</strong> e controlla il periodo visualizzato prima di confrontare o esportare i risultati.</li>
+            </ol>
+            <h3>Interpreta indicatori e grafici</h3>
+            <ul>
+              <li><strong>Interventi nel periodo</strong> conta gli interventi in base alla data prevista. Il relativo riepilogo distingue completati, aperti nei tempi e in ritardo. <strong>Completati</strong> mostra la quota sul totale degli interventi del periodo.</li>
+              <li><strong>Cantieri attivi</strong> è un indicatore di stato delle schede. Il conteggio delle risorse include clienti collegati, ordini, DDT, computi, preventivi, personale, squadre, mezzi assegnati e articoli sotto scorta. Il magazzino è un indicatore aziendale.</li>
+              <li><strong>Ore lavorate</strong> deriva dalle presenze registrate. Confronta le ore per persona e luogo nelle tabelle del report. Un trattino indica che il riepilogo non è disponibile.</li>
+              <li><strong>Dettaglio economico e fatture</strong> apre la situazione di incassi e pagamenti, il riepilogo per cantiere e il dettaglio dei documenti. I valori dipendono dalle registrazioni interne; bozze e dati incompleti sono riepilogati a parte.</li>
+            </ul>
+            <h3>Esporta o stampa</h3>
+            <p>In <strong>Esportazioni e stampa</strong>, <strong>Riepilogo CSV</strong> salva indicatori, serie mensili e dati per cantiere. <strong>Resoconto fatture CSV</strong> esporta le righe disponibili con importi, stati e date. <strong>Stampa resoconto</strong> apre la finestra di stampa del browser, da cui puoi salvare un PDF se il browser offre questa opzione.</p>
+          </section>
+
+          <section id="bilanci" class="guide-section">
+            <h2>Bilanci, conti e movimenti</h2>
+            <h3>Bilancio gestionale</h3>
+            <p>Apri <strong>Bilanci e conti → Bilancio gestionale</strong>, seleziona il periodo e, se utile, un cantiere. Applica i filtri per ottenere il riepilogo dalle fatture registrate in <strong>Documenti</strong>.</p>
+            <ul>
+              <li><strong>Ricavi fatturati</strong> somma gli imponibili delle fatture emesse. <strong>Costi fatturati</strong> somma gli imponibili delle fatture ricevute. <strong>Saldo fatturato</strong> è la differenza, IVA esclusa.</li>
+              <li>Gli importi da incassare o pagare e i relativi scaduti sono indicati IVA inclusa. Per il riepilogo di incassi e pagamenti del periodo contano le date di saldo registrate. Le fatture saldate senza data di saldo sono segnalate a parte.</li>
+              <li>Consulta il dettaglio per cantiere e le fatture alla base del resoconto. Usa le esportazioni CSV o la stampa per condividere il risultato del filtro.</li>
+            </ul>
+            <p>Questo è un bilancio gestionale basato sui documenti interni. Per una verifica contabile confronta il dato con fatture e registri effettivi.</p>
+            <h3>Apri un conto e registra un movimento</h3>
+            <ol>
+              <li>Vai a <strong>Bilanci e conti → Estratti conto</strong> e premi <strong>Nuovo conto</strong>. Indica nome, data di apertura e saldo iniziale in euro, poi scegli <strong>Salva conto</strong>.</li>
+              <li>Seleziona il conto e premi <strong>Nuovo movimento</strong>. Compila descrizione, tipo <strong>Entrata</strong> o <strong>Uscita</strong>, importo positivo in euro e data. La data non può precedere l’apertura del conto.</li>
+              <li>Associa un cantiere o un riferimento, ad esempio un numero di fattura, se ti aiuta a riconciliare l’operazione. Premi <strong>Salva movimento</strong>.</li>
+            </ol>
+            <p>Il registro si basa sui movimenti inseriti nel conto. Lo stato <strong>Saldata</strong> di una fattura e il movimento dell’estratto conto sono registrazioni separate.</p>
+            <h3>Controlla il saldo e correggi una registrazione</h3>
+            <p>Seleziona il conto e imposta <strong>Dal</strong> e <strong>Al</strong>. Il saldo iniziale tiene conto dei movimenti validi precedenti al periodo, a partire dal saldo di apertura. Entrate e uscite nel periodo producono il saldo finale. Ogni riga mostra il saldo progressivo. <strong>Esporta CSV</strong> scarica l’estratto del conto selezionato.</p>
+            <p>Usa <strong>Modifica conto</strong> per correggere l’anagrafica, oppure la matita sulla riga per correggere un movimento. Se una riga non deve più concorrere al saldo, scegli <strong>Annulla movimento</strong> e conferma. La voce rimane consultabile in <strong>Movimenti annullati</strong>.</p>
+          </section>
+
+          <section id="cestino" class="guide-section">
+            <h2>Archivio, eliminazione e cestino</h2>
+            <h3>Decidi se archiviare o eliminare</h3>
+            <p>Nei moduli in cui compare <strong>Archivia</strong>, puoi spostare una scheda fuori dalle viste attive e consultarla nel filtro <strong>Archiviate</strong>. Il ripristino da quella vista la riporta tra le schede attive. Usa <strong>Elimina</strong> per spostare nel Cestino un elemento supportato, dopo aver confermato l’azione.</p>
+            <h3>Ripristina un elemento eliminato</h3>
+            <ol>
+              <li>Subito dopo l’eliminazione puoi scegliere <strong>Ripristina</strong> nell’avviso temporaneo, quando presente.</li>
+              <li>Se l’avviso si è chiuso, apri <strong>Cestino</strong> dal menu Gestione. Usa <strong>Tipo di elemento</strong> per restringere l’elenco.</li>
+              <li>Trova la riga verificando nome, tipo e data di eliminazione. Premi <strong>Ripristina</strong> e torna al modulo originario per controllarla.</li>
+            </ol>
+            <p>Il Cestino copre interventi, preventivi, schede operative, clienti, cantieri, scadenze operai, PDF originali e documenti importati. Prima di eliminare un cliente, riassegna o gestisci i cantieri collegati. Eliminare un cantiere nasconde le attività e i documenti collegati dalle viste operative; il ripristino recupera i collegamenti conservati.</p>
+            <p>Il magazzino applica vincoli su giacenze e movimenti attivi anche quando archivi, elimini o ripristini. Se l’azione è respinta, verifica prima le schede collegate e la coerenza della giacenza.</p>
+          </section>
+
+          <section id="risoluzione" class="guide-section">
+            <h2>Problemi frequenti</h2>
+            <h3>Accesso bloccato o dati di un’altra azienda</h3>
+            <p>Verifica l’indirizzo aziendale e la password. Alla prima attivazione completa il percorso dell’invito fino al salvataggio della password. Se Imprelio indica che non hai accesso a un’azienda, chiedi all’amministratore di controllare il tuo profilo. Se operi su più aziende, verifica quella selezionata nel menu account.</p>
+            <h3>Una scheda o un dato non compare</h3>
+            <p>Controlla azienda, cantiere, date, ricerca e filtro di stato. Verifica se la scheda è archiviata oppure nel Cestino. Nei resoconti verifica anche il campo da cui dipende il filtro, ad esempio data prevista dell’intervento, data fattura o data di saldo.</p>
+            <h3>Il PDF non viene letto come previsto</h3>
+            <p>Per creare un preventivo verifica che il PDF contenga testo selezionabile e sia in un formato di computo leggibile dal parser. L’Archivio documenti può usare OCR per fotografie e scansioni. Controlla i dati proposti rispetto all’originale prima di salvare. <a href="#computi">Vai a Computi e preventivi</a>.</p>
+            <h3>Modulo in attesa di aggiornamento</h3>
+            <p>Se una pagina segnala che il modulo è in attesa di aggiornamento, comunica all’amministratore tecnico il nome del modulo e l’errore esatto. Per le installazioni Supabase il repository include migrazioni e una procedura di confronto dello schema da eseguire sul progetto corretto. <a href="https://github.com/Brack04NC/Imprelio/blob/21b8dfa505a04901d231bc0f34f46ce74be8f10b/README.md#verifica-del-database-supabase">Verifica dello schema Supabase nel repository</a>.</p>
+            <h3>Le modifiche della demo non si vedono altrove</h3>
+            <p>La demo salva le modifiche sul browser. Un altro dispositivo, profilo o browser può mostrare dati diversi. Per operare su dati condivisi usa l’installazione aziendale e accedi con un account abilitato.</p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <a class="brand" href="/" aria-label="Imprelio, torna alla pagina iniziale"><img src="/imprelio-mark.png" alt="" width="32" height="32" loading="lazy" />Imprelio</a>
+        <div class="footer-links">
+          <a class="text-link" href="#indice">Torna all’indice</a>
+          <a class="text-link" href="https://doublen-digital-solutions-demo.brack04nc.chatgpt.site/">DoubleN Digital Solutions <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
