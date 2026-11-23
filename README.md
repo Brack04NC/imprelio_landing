@@ -20,6 +20,17 @@ npm run build
 
 `npm test` verifica i riferimenti agli asset, le ancore interne e la sintassi degli URL della landing e della guida. Gli asset si trovano in `public/`. Per servire la build in locale, esegui `npm run preview`.
 
+## Confronto prima e dopo
+
+Per generare il confronto, usa un checkout Git che contenga il commit di partenza `ab40995`. Lo script usa Git, `tar` e npm. Crea `/prima/` dal commit di partenza e `/dopo/` dai file correnti, mantenendo la guida e il PDF all’interno di ciascuna versione.
+
+```bash
+npm run build:confronto
+npm run preview -- --outDir dist-confronto
+```
+
+L’indice per scegliere la versione è alla radice dell’anteprima. La configurazione Sites usa `dist-confronto/` come radice statica. Esegui `npm run build:confronto` prima di avviare `sites-preview start .` in un ambiente che supporta l’anteprima Sites.
+
 ## Guida operativa
 
 La pagina del manuale è in `guida/index.html`. I moduli principali del gestionale hanno ciascuno un capitolo raggiungibile dall’indice. La versione scaricabile `public/guida-imprelio.pdf` deriva dalla stessa pagina con gli stili di stampa in `src/guide.css`.

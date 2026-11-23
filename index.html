@@ -1,9 +1,11 @@
 <!doctype html>
-<html lang="it">
+<html lang="it" data-type="software">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f8f6ef" />
+    <meta name="theme-color" content="#f6f8fb" />
+    <meta name="page-type" content="software" />
+    <meta name="site-kind" content="software" />
     <title>Imprelio · Il gestionale per cantieri e ponteggi</title>
     <meta name="description" content="Imprelio è il gestionale per le imprese di ponteggi. Organizza cantieri, interventi, squadre, magazzino e preventivi in un unico posto." />
     <meta property="og:type" content="website" />
@@ -56,12 +58,8 @@
           </div>
 
           <figure class="hero-visual">
-            <picture class="hero-photo">
-              <source media="(max-width: 540px)" srcset="/ponteggi-mobile.webp" />
-              <img src="/ponteggi.webp" width="1680" height="560" alt="" fetchpriority="high" />
-            </picture>
             <div class="hero-product">
-              <img src="/dashboard.webp" width="1280" height="820" alt="Dashboard di Imprelio con il riepilogo dei cantieri e gli interventi in agenda" />
+              <img src="/dashboard.webp" width="1280" height="820" alt="Dashboard di Imprelio con il riepilogo dei cantieri e gli interventi in agenda" fetchpriority="high" />
             </div>
             <figcaption>Schermata di Imprelio con dati dimostrativi</figcaption>
           </figure>
@@ -81,7 +79,7 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow"><span></span> Funzionalità</p>
-            <h2 id="features-title">Tutto il lavoro<br /> gira intorno al cantiere.</h2>
+            <h2 id="features-title">Tutto il lavoro gira intorno al cantiere.</h2>
           </div>
           <p>Parti dalla scheda del cantiere e ritrova le informazioni che ti servono per organizzare gli interventi e seguirne l’avanzamento.</p>
         </div>
@@ -139,12 +137,16 @@
       </section>
 
       <section class="wrap manual-promo" aria-labelledby="manual-promo-title">
-        <div>
+        <div class="manual-copy">
           <p class="eyebrow"><span></span> Manuale operativo</p>
           <h2 id="manual-promo-title">Impara a usare Imprelio.</h2>
           <p>Segui i passaggi per lavorare nel gestionale, dalla creazione di un cantiere alla consultazione di bilanci e statistiche.</p>
+          <a class="button button-outline" href="/guida/">Apri la guida <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
         </div>
-        <a class="button button-dark" href="/guida/">Apri la guida <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        <picture class="manual-photo">
+          <source media="(max-width: 540px)" srcset="/ponteggi-mobile.webp" />
+          <img src="/ponteggi.webp" width="1680" height="560" alt="" loading="lazy" />
+        </picture>
       </section>
 
       <section class="faq section-space wrap" id="faq" aria-labelledby="faq-title">
@@ -180,8 +182,8 @@
             <p>Scopri DoubleN Digital Solutions. Se hai già un account, accedi al tuo spazio di lavoro.</p>
           </div>
           <div class="closing-actions">
-            <a class="button button-dark" href="https://doublen-digital-solutions-demo.brack04nc.chatgpt.site/">Vai al sito DoubleN <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-            <a class="text-link" href="https://imprelio.vercel.app/login">Accedi a Imprelio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+            <a class="button button-strong" href="https://imprelio.vercel.app/login">Accedi a Imprelio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+            <a class="text-link" href="https://doublen-digital-solutions-demo.brack04nc.chatgpt.site/">Vai al sito DoubleN <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
           </div>
         </div>
       </section>
