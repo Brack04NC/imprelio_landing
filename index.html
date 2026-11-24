@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f8fb" />
+    <meta name="theme-color" content="#faf7ef" />
     <meta name="page-type" content="software" />
     <meta name="site-kind" content="software" />
     <title>Imprelio · Il gestionale per cantieri e ponteggi</title>
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/src/styles.css" />
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body>
+  <body class="landing-page">
     <a class="skip-link" href="#contenuto">Salta al contenuto</a>
     <header class="site-header" id="inizio">
       <div class="wrap header-inner">
@@ -36,8 +36,8 @@
           <nav aria-label="Navigazione mobile">
             <a href="#funzionalita">Funzionalità</a>
             <a href="#come-funziona">Come funziona</a>
-            <a href="#faq">FAQ</a>
             <a href="/guida/">Guida di Imprelio</a>
+            <a href="#faq">FAQ</a>
             <a href="https://imprelio.vercel.app/login">Accedi a Imprelio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
           </nav>
         </details>
@@ -49,7 +49,7 @@
         <div class="wrap hero-grid">
           <div class="hero-copy">
             <p class="eyebrow"><span></span> Il gestionale per i ponteggi</p>
-            <h1 id="hero-title">In cantiere,<br /> tutto sotto<br /> <em>controllo.</em></h1>
+            <h1 id="hero-title">In cantiere, tutto sotto <em>controllo.</em></h1>
             <p class="hero-description">Organizza cantieri, interventi e squadre. Tieni insieme magazzino, documenti e preventivi, dalla pianificazione al lavoro sul campo.</p>
             <div class="hero-actions">
               <a class="button button-strong" href="#funzionalita">Scopri Imprelio <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
@@ -58,22 +58,27 @@
           </div>
 
           <figure class="hero-visual">
-            <div class="hero-product">
-              <img src="/dashboard.webp" width="1280" height="820" alt="Dashboard di Imprelio con il riepilogo dei cantieri e gli interventi in agenda" fetchpriority="high" />
-            </div>
+            <picture class="hero-site">
+              <source media="(max-width: 540px)" srcset="/ponteggi-mobile.webp" />
+              <img src="/ponteggi.webp" width="1680" height="560" alt="" />
+            </picture>
+            <picture class="hero-product">
+              <source media="(max-width: 540px)" srcset="/dashboard-mobile.webp" width="780" height="672" />
+              <img src="/dashboard.webp" width="1280" height="820" alt="Dashboard di Imprelio con le attività in agenda" fetchpriority="high" />
+            </picture>
             <figcaption>Schermata di Imprelio con dati dimostrativi</figcaption>
           </figure>
         </div>
       </section>
 
-      <div class="wrap">
-        <ul class="module-strip" aria-label="Attività principali">
-          <li><i class="ph ph-buildings" aria-hidden="true"></i> Cantieri e clienti</li>
-          <li><i class="ph ph-calendar-dots" aria-hidden="true"></i> Agenda e squadre</li>
-          <li><i class="ph ph-package" aria-hidden="true"></i> Magazzino e mezzi</li>
-          <li><i class="ph ph-file-text" aria-hidden="true"></i> Documenti e computi</li>
+      <nav class="wrap" aria-label="Attività principali">
+        <ul class="module-strip" role="list">
+          <li><a href="#clienti-cantieri"><i class="ph ph-buildings" aria-hidden="true"></i> Cantieri e clienti</a></li>
+          <li><a href="#agenda-interventi"><i class="ph ph-calendar-dots" aria-hidden="true"></i> Agenda e squadre</a></li>
+          <li><a href="#magazzino-veicoli"><i class="ph ph-package" aria-hidden="true"></i> Magazzino e mezzi</a></li>
+          <li><a href="#computi-preventivi"><i class="ph ph-file-text" aria-hidden="true"></i> Documenti e computi</a></li>
         </ul>
-      </div>
+      </nav>
 
       <section class="features section-space wrap" id="funzionalita" aria-labelledby="features-title">
         <div class="section-heading">
@@ -85,12 +90,12 @@
         </div>
 
         <div class="feature-grid">
-          <article class="feature-card">
+          <article class="feature-card" id="clienti-cantieri">
             <div class="feature-icon"><i class="ph ph-buildings" aria-hidden="true"></i></div>
             <h3>Clienti e cantieri</h3>
             <p>Collega più cantieri allo stesso cliente e ritrova personale, documenti, movimenti e computi dalla scheda di ogni lavoro.</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-card" id="agenda-interventi">
             <div class="feature-icon"><i class="ph ph-calendar-dots" aria-hidden="true"></i></div>
             <h3>Agenda interventi</h3>
             <p>Pianifica montaggi, smontaggi e sopralluoghi. Consulta gli interventi per giorno, settimana o mese.</p>
@@ -100,12 +105,12 @@
             <h3>Squadre e presenze</h3>
             <p>Gestisci personale interno e squadre esterne. Registra ore e assenze e segui visite mediche e certificazioni in scadenza.</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-card" id="magazzino-veicoli">
             <div class="feature-icon"><i class="ph ph-truck" aria-hidden="true"></i></div>
             <h3>Magazzino e veicoli</h3>
             <p>Segui carichi, scarichi e giacenze. Usa la scheda di ogni veicolo per assegnazioni, utilizzi e manutenzioni.</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-card" id="computi-preventivi">
             <div class="feature-icon"><i class="ph ph-calculator" aria-hidden="true"></i></div>
             <h3>Computi e preventivi</h3>
             <p>Parti da un computo PDF compatibile, rivedi le voci e applica il tuo listino prima di produrre il preventivo.</p>
@@ -123,16 +128,19 @@
           <div class="workflow-copy">
             <p class="eyebrow"><span></span> Come funziona</p>
             <h2 id="workflow-title">Dal primo intervento all’ultimo carico.</h2>
-            <ol class="workflow-list">
-              <li><i class="ph ph-map-pin" aria-hidden="true"></i><div><h3>Apri un cantiere</h3><p>Collegalo al cliente e raccogli nella scheda le informazioni del lavoro.</p></div></li>
-              <li><i class="ph ph-calendar-check" aria-hidden="true"></i><div><h3>Pianifica gli interventi</h3><p>Organizza sopralluoghi, montaggi e smontaggi nel calendario.</p></div></li>
-              <li><i class="ph ph-list-checks" aria-hidden="true"></i><div><h3>Segui l’operatività</h3><p>Registra presenze e movimenti di magazzino e consulta le scadenze.</p></div></li>
-            </ol>
           </div>
           <figure class="workflow-preview">
-            <img src="/agenda.webp" width="1280" height="820" alt="Agenda di Imprelio con la pianificazione degli interventi dimostrativi" loading="lazy" />
+            <picture>
+              <source media="(max-width: 540px)" srcset="/agenda-mobile.webp" width="780" height="760" />
+              <img src="/agenda.webp" width="1280" height="820" alt="Agenda di Imprelio con la pianificazione degli interventi dimostrativi" loading="lazy" />
+            </picture>
             <figcaption>Vista Agenda con dati dimostrativi</figcaption>
           </figure>
+          <ol class="workflow-list" role="list">
+            <li><i class="ph ph-map-pin" aria-hidden="true"></i><div><h3>Apri un cantiere</h3><p>Collegalo al cliente e raccogli nella scheda le informazioni del lavoro.</p></div></li>
+            <li><i class="ph ph-calendar-check" aria-hidden="true"></i><div><h3>Pianifica gli interventi</h3><p>Organizza sopralluoghi, montaggi e smontaggi nel calendario.</p></div></li>
+            <li><i class="ph ph-list-checks" aria-hidden="true"></i><div><h3>Segui l’operatività</h3><p>Registra presenze e movimenti di magazzino e consulta le scadenze.</p></div></li>
+          </ol>
         </div>
       </section>
 
@@ -143,10 +151,6 @@
           <p>Segui i passaggi per lavorare nel gestionale, dalla creazione di un cantiere alla consultazione di bilanci e statistiche.</p>
           <a class="button button-outline" href="/guida/">Apri la guida <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
         </div>
-        <picture class="manual-photo">
-          <source media="(max-width: 540px)" srcset="/ponteggi-mobile.webp" />
-          <img src="/ponteggi.webp" width="1680" height="560" alt="" loading="lazy" />
-        </picture>
       </section>
 
       <section class="faq section-space wrap" id="faq" aria-labelledby="faq-title">
